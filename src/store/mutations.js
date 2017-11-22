@@ -16,6 +16,10 @@ export default {
   [types.SET_CRID] (state, crid) {
     state.crid = crid
   },
+  [types.SET_STUDENT] (state, student) {
+    sessionStorage.student = student
+    state.student = student
+  },
   [types.SET_INFO] (state, info) {
     state.info = info
   },

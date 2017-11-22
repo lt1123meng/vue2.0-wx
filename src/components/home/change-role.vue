@@ -56,7 +56,8 @@
       ...mapMutations({
         setCRID: 'SET_CRID',
         setVIPTEA: 'SET_VIPTEA',
-        setVIPPAR: 'SET_VIPPAR'
+        setVIPPAR: 'SET_VIPPAR',
+        setStudent: 'SET_STUDENT'
       })
     },
     computed: {

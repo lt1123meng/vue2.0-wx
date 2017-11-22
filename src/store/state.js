@@ -7,6 +7,7 @@ export default {
   oid: '',
   role: [],
   crid: '',
+  student: '',
   info: {},
   viptea: '',
   vippar: '',

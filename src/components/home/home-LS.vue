@@ -123,6 +123,11 @@
   @import "../../common/less/mixin.less";
 
   .home-ls-wrapper {
+    position: absolute;
+    top: 0px;
+    bottom: 50px;
+    width: 100%;
+    overflow: scroll;
     .header-wrapper {
       display: flex;
       padding: 14px 8px;

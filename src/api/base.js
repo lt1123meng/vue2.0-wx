@@ -47,7 +47,7 @@ export const getVipInfo = function (crid, that, refresh = false, callback) {
     .then((data) => {
       data = data.data
       if (data.success) {
-        if (crid === 'LS') {
+        if (sessionStorage.crid === 'LS') {
           let vip = {}
           if (!data.datas) {
             // 等级0：试用 1：普通用户 2：vip 3：vvip
@@ -68,6 +68,8 @@ export const getVipInfo = function (crid, that, refresh = false, callback) {
         } else {
           if (data.datas) {
             let vip = {}
+            let dex = -1
+            let oid = ''
             for (var i = 0; i < data.datas.length; i++) {
               var obj = {}
               if (!data.datas[i].userInfo) {
@@ -81,8 +83,14 @@ export const getVipInfo = function (crid, that, refresh = false, callback) {
               obj.stuName = data.datas[i].studentInfo.name
               obj.classId = data.datas[i].studentInfo.classid
               obj.className = data.datas[i].studentInfo.className
+              if (sessionStorage.student && sessionStorage.student === obj.stuId) {
+                dex = sessionStorage.student
+              }
+              if (i === 0) oid = obj.stuId
               vip[obj.stuId] = obj
             }
+            if (dex === -1 && data.datas[0]) sessionStorage.student = oid
+            that.setStudent(sessionStorage.student)
             that.setVIPPAR(vip)
           }
         }

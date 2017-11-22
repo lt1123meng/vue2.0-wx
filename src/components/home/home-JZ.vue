@@ -18,9 +18,80 @@
       <img v-lazy="'/src/static/poster/index.jpg'" width="100%">
     </div>
     <div class="student-wrapper">
-      <div class="box">
-        <div class="name">当前角色：{{}}</div>
-        <div class="class">{{}}</div>
+      <div class="box" @click="goChangeStudent">
+        <div class="name">当前学生：{{vippar?vippar[student].stuName:''}}</div>
+        <div class="class">{{vippar?vippar[student].className:''}}</div>
+      </div>
+    </div>
+    <div class="common-data-wrapper">
+      <div class="item-wrapper">
+        <div class="operate-wrapper">
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+        </div>
+        <div class="content-wrapper">
+          <div class="title-time">
+            <div class="title">班级表现</div>
+            <div class="time">本周 (09-17~09.23)</div>
+          </div>
+          <div class="blank"></div>
+          <div class="result-wrapper">
+            <div class="icon-wrapper">
+              <img src="/src/static/icon/icon-smile1.jpg" class="icon">
+            </div>
+            <div class="text">
+              表扬10次/批评31次
+            </div>
+          </div>
+        </div>
+        <div class="more-wrapper">查看更多</div>
+      </div>
+      <div class="item-wrapper">
+        <div class="operate-wrapper">
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+        </div>
+        <div class="content-wrapper">
+          <div class="title-time">
+            <div class="title">班级表现</div>
+            <div class="time">本周 (09-17~09.23)</div>
+          </div>
+          <div class="blank"></div>
+          <div class="result-wrapper">
+            <div class="icon-wrapper">
+              <img src="/src/static/icon/icon-smile3.jpg" class="icon">
+            </div>
+            <div class="text">
+              表扬10次/批评31次
+            </div>
+          </div>
+        </div>
+        <div class="more-wrapper">查看更多</div>
+      </div>
+      <div class="item-wrapper">
+        <div class="operate-wrapper">
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+        </div>
+        <div class="content-wrapper">
+          <div class="title-time">
+            <div class="title">班级表现</div>
+            <div class="time">本周 (09-17~09.23)</div>
+          </div>
+          <div class="blank"></div>
+          <div class="result-wrapper">
+            <div class="icon-wrapper">
+              <img src="/src/static/icon/icon-smile2.jpg" class="icon">
+            </div>
+            <div class="text">
+              表扬10次/批评31次
+            </div>
+          </div>
+        </div>
+        <div class="more-wrapper">查看更多</div>
       </div>
     </div>
 
@@ -40,7 +111,7 @@
     created: function () {
     },
     computed: {
-      ...mapGetters(['ratio', 'crid', 'role'])
+      ...mapGetters(['ratio', 'crid', 'role', 'student', 'vippar'])
     },
     methods: {
       calenderClick () {
@@ -50,16 +121,27 @@
         if (this.role.length === 2) {
           this.$router.push('/home/role')
         }
+      },
+      goChangeStudent () {
+        if (this.vippar.length < 2) return
+        this.$router.push('/home/student')
       }
     }
   }
 </script>
 <style lang="less" rel="stylesheet/less">
   @import "../../common/less/variable";
+  @import "../../common/less/mixin";
 
   .home-jz-wrapper {
+    position: absolute;
+    top: 0px;
+    bottom: 50px;
+    width: 100%;
+    overflow: scroll;
     padding-top: 38px;
     .search-wrapper {
+      .border-1px();
       position: fixed;
       top: 0;
       width: 100%;
@@ -69,6 +151,7 @@
       height: 38px;
       line-height: 38px;
       background-color: #fff;
+      z-index: 1;
       .schedule-box {
         flex: 0 0 40px;
         -webkit-flex: 0 0 40px;
@@ -112,6 +195,75 @@
         .class {
           flex: 1;
           text-align: right;
+        }
+      }
+    }
+    .common-data-wrapper {
+      padding: 16px 12px 0 12px;
+      box-sizing: border-box;
+      .item-wrapper {
+        position: relative;
+        margin-bottom: 12px;
+        padding: 26px 8px 0 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #fff;
+        .operate-wrapper{
+          position: absolute;
+          top: 6px;
+          right: 10px;
+          .tag{
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: @light-grey;
+          }
+        }
+        .content-wrapper {
+          display: flex;
+          .border-1px();
+          .title-time {
+            flex: 0;
+            .title {
+              height: 32px;
+              font-size: @font-size-medium-x;
+              font-weight: bold;
+            }
+            .time {
+              margin: 22px 0 16px 0;
+              white-space: nowrap;
+              color: darken(@light-grey,20%);
+            }
+          }
+          .blank{
+            flex: 1;
+          }
+          .result-wrapper {
+            flex: 0;
+            .icon-wrapper {
+              margin: 0 auto;
+              width: 32px;
+              height: 32px;
+              .icon {
+                width: inherit;
+                height: inherit;
+                vertical-align: middle;
+              }
+            }
+            .text {
+              margin: 22px 0 16px 0;
+              white-space: nowrap;
+              color: darken(@light-grey,20%);
+            }
+          }
+        }
+        .more-wrapper {
+          height: 30px;
+          line-height: 30px;
+          color: @light-grey;
+          text-align: center;
+          font-size: 13px;
         }
       }
     }

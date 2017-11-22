@@ -7,21 +7,21 @@
     </div>
     <footer class="footer" v-if="crid==='LS'">
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="home">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
           <img class="able img" v-lazy="'/src/static/footer/nav-home@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="message">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/class">
           <img class="able img" v-lazy="'/src/static/footer/nav-user@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
           <p>班级</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="setup">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
           <img class="able img" v-lazy="'/src/static/footer/nav-setup@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
@@ -30,21 +30,21 @@
     </footer>
     <footer class="footer" v-if="crid==='JZ'||crid==='BR'">
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="home">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
           <img class="able img" v-lazy="'/src/static/footer/nav-home@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="message">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/message">
           <img class="able img" v-lazy="'/src/static/footer/nav-user@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
           <p>消息</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="setup">
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
           <img class="able img" v-lazy="'/src/static/footer/nav-setup@'+ratio+'x.png'">
           <img class="disable img" v-lazy="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
@@ -68,6 +68,8 @@
         sessionStorage.oid = this.$route.query.oid
         sessionStorage.crid = ''
       }
+      this.setOID(sessionStorage.oid)
+      this.setCRID(sessionStorage.crid)
       this._getBaseInfo()
       this._getRole()
       this._getIntegrate()
@@ -106,7 +108,8 @@
         setCRID: 'SET_CRID',
         setVIPTEA: 'SET_VIPTEA',
         setVIPPAR: 'SET_VIPPAR',
-        setIntegrate: 'SET_INTEGRATE'
+        setIntegrate: 'SET_INTEGRATE',
+        setStudent: 'SET_STUDENT'
       })
     },
     computed: {

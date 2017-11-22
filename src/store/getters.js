@@ -9,6 +9,7 @@ export const ratio = state => state.ratio
 export const oid = state => state.oid
 export const role = state => state.role
 export const crid = state => state.crid
+export const student = state => state.student
 export const info = state => state.info
 export const viptea = state => state.viptea
 export const vippar = state => state.vippar
