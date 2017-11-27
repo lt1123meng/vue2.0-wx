@@ -42,7 +42,6 @@ export const getIntegrate = function () {
 export const getVipInfo = function (crid, that, refresh = false, callback) {
   if (crid === 'LS' && that.viptea && !refresh) return
   if (crid !== 'LS' && that.vippar && !refresh) return
-  console.log(that)
   axios.get(BASE_USER + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
     .then((data) => {
       data = data.data
@@ -99,5 +98,12 @@ export const getVipInfo = function (crid, that, refresh = false, callback) {
           level: 1
         })
       }
+    })
+}
+
+export const getSubject = function () {
+  return axios.get('http://www.microoak.cn/test/wx//subject/list')
+    .then((data) => {
+      return Promise.resolve(data.data)
     })
 }

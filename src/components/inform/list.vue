@@ -63,7 +63,6 @@
           type: 'lode',
           recordtime: this.list.length === 0 ? new Date().toDateString() : this.list[this.list.length - 1].createTime
         }).then((res) => {
-          this.requesting = false
           this.top = true
           res = res.data
           if (this.list === '') {
@@ -71,13 +70,11 @@
           } else {
             this.list = this.list.concat(JSON.parse(res))
           }
-          debugger
           if (JSON.parse(res).length < 5) {
             this.finish = true
           } else {
             this.finish = false
           }
-          console.log(this.$refs)
           if (tag) {
             this.$refs.loadmore.onTopLoaded()
           }

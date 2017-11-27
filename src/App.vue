@@ -65,7 +65,7 @@
       this.setRatio = ratio
       if (this.$route.query.oid) {
         sessionStorage.oid = this.$route.query.oid
-        sessionStorage.crid = ''
+        sessionStorage.crid = this.$route.query.crid
       }
       this.setOID(sessionStorage.oid)
       this.setCRID(sessionStorage.crid)
@@ -81,18 +81,26 @@
       },
       _getRole () {
         getRole().then((res) => {
-          console.log(this)
           this.setRole(res)
-          debugger
           if (res.length === 1) {
             sessionStorage.crid = res[0]
             this.setCRID(res[0])
             this._getVIPInfo()
-            this.$router.replace('/home')
-          } else if (!sessionStorage.crid || this.$route.path === '/') {
-            this.$router.replace('/role')
+            if (this.$route.query.route) {
+              this.$router.replace(this.$route.query.route)
+            } else {
+              this.$router.replace('/home')
+            }
           } else {
-            this._getVIPInfo()
+            console.log(this.$route.path)
+            if (!sessionStorage.crid) {
+              this.$router.replace('/role')
+            } else {
+              if (this.$route.query.route) {
+                this.$router.replace(this.$route.query.route)
+              }
+              this._getVIPInfo()
+            }
           }
         })
       },
