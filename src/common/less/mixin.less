@@ -19,6 +19,19 @@
   }
 }
 
+.border-top-1px() {
+  position: relative;
+  &:before {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-top: 1px solid @border-color;
+    content: ' ';
+  }
+}
+
 .border-0px() {
   position: relative;
   &:after {

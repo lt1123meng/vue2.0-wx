@@ -42,24 +42,7 @@
         </button>
       </div>
     </div>
-    <div class="menu-list-wrapper">
-      <div class="menu-section" v-for="section in menu">
-        <div class="title" v-if="section.name">
-          {{section.name}}
-        </div>
-        <div class="section-wrapper">
-          <div class="menu" v-for="menu in section.list">
-            <div class="icon-wrapper">
-              <img class="icon" v-lazy="'/src/static/menu/'+menu.icon">
-              <span v-if="menu.new" class="tag">NEW</span>
-              <span v-if="menu.hot" class="tag">HOT</span>
-              <span v-if="menu.circle" class="tag"></span>
-            </div>
-            <p class="text">{{menu.text}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <menu-list :menu="menu"></menu-list>
     <div class="common-data-wrapper">
       <mt-navbar v-model="navSelected">
         <mt-tab-item id="1">通知</mt-tab-item>
@@ -68,9 +51,9 @@
         <mt-tab-item id="4">常规</mt-tab-item>
         <mt-tab-item id="5">风采</mt-tab-item>
       </mt-navbar>
-      <mt-tab-container v-model="navSelected">
+      <mt-tab-container ref="container" v-model="navSelected">
         <mt-tab-container-item id="1">
-          <div class="item" v-for="n in 10" :key="n" :title="'内容 ' + n">{{n}}</div>
+          <inform-list></inform-list>
         </mt-tab-container-item>
         <mt-tab-container-item id="2">
           <div class="item" v-for="n in 4" :key="n" :title="'测试 ' + n">{{n}}</div>
@@ -89,8 +72,10 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {mapGetters} from 'vuex'
+  import MenuList from 'base/menu-list/menu-list'
+  import InformList from 'components/inform/list'
   import {MenusLS} from 'base/data'
+  import {mapGetters} from 'vuex'
   export default {
     data () {
       return {
@@ -101,7 +86,12 @@
         navSelected: '1'
       }
     },
-    created: function () {
+    created () {
+    },
+    mounted: function () {
+      this.$nextTick(function () {
+        this._initHeight()
+      })
     },
     computed: {
       ...mapGetters(['ratio', 'crid', 'role', 'info', 'integrate'])
@@ -114,7 +104,16 @@
         if (this.role.length === 2) {
           this.$router.push('/home/role')
         }
+      },
+      _initHeight () {
+        this.$refs.container.$el.style.height = window.innerHeight - 50 - 36 + 'px'
+        this.$refs.container.$el.style.overflow = 'scroll'
+        this.$refs.container.$el.style.position = 'relative'
       }
+    },
+    components: {
+      MenuList,
+      InformList
     }
   }
 </script>
@@ -188,7 +187,7 @@
     }
     .integrate-wrapper {
       display: flex;
-      margin-top: 8px;
+      margin: 8px 0;
       padding: 16px 0;
       box-sizing: border-box;
       background-color: #fff;
@@ -218,51 +217,10 @@
         }
       }
     }
-    .menu-list-wrapper {
-      margin-top: 8px;
-      background-color: #fff;
-      .menu-section {
-        .border-1px();
-        box-sizing: border-box;
-        &:last-of-type {
-          .border-0px();
-        }
-        .title {
-          margin-top: 12px;
-          padding-left: 16px;
-          font-size: 15px;
-          font-weight: bold;
-          border-left: 4px solid @orange-color;
-        }
-        .section-wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          padding-top: 12px;
-          .menu {
-            margin-bottom: 12px;
-            flex: 0 0 25%;
-            text-align: center;
-            .icon-wrapper {
-              margin: 0 auto;
-              width: 32px;
-              height: 32px;
-              position: relative;
-              .icon {
-                height: inherit;
-                width: inherit;
-              }
-            }
-            .text {
-              margin-top: 8px;
-              color: #5b5b5b;
-            }
-          }
-        }
-      }
-    }
     .common-data-wrapper {
       margin-top: 8px;
       .mint-navbar {
+        .border-1px();
         .mint-tab-item {
           padding: 0;
           height: 36px;

@@ -94,10 +94,43 @@
         <div class="more-wrapper">查看更多</div>
       </div>
     </div>
-
+    <div class="news-wrapper">
+      <div class="icon-wrapper">
+        <div class="box">
+          <span class="icon">!</span>
+        </div>
+      </div>
+      <div class="content-wrapper">
+        您收到一条新消息，<span class="click">点击查看</span>
+      </div>
+    </div>
+    <div class="menu-component-wrapper">
+      <menu-list :menu="menu"></menu-list>
+    </div>
+    <div class="headline-wrapper">
+      <div class="title-wrapper">
+        <div class="text">园钉头条</div>
+      </div>
+      <div class="content-wrapper">
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <span class="icon">热门</span>
+          </div>
+          <div class="text">骄傲了解放路可骄傲的卡夫卡啦</div>
+        </div>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <span class="icon">热门</span>
+          </div>
+          <div class="text">骄傲了解放路可骄傲的卡夫卡啦</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import MenuList from 'base/menu-list/menu-list'
+  import {MenusJZ} from 'base/data'
   import {mapGetters} from 'vuex'
   export default {
     data () {
@@ -105,7 +138,8 @@
         info: {},
         centerShow: false,
         scroll: '',
-        calendarShow: false
+        calendarShow: false,
+        menu: MenusJZ
       }
     },
     created: function () {
@@ -126,6 +160,9 @@
         if (this.vippar.length < 2) return
         this.$router.push('/home/student')
       }
+    },
+    components: {
+      MenuList
     }
   }
 </script>
@@ -208,11 +245,11 @@
         border-radius: 4px;
         overflow: hidden;
         background-color: #fff;
-        .operate-wrapper{
+        .operate-wrapper {
           position: absolute;
           top: 6px;
           right: 10px;
-          .tag{
+          .tag {
             display: inline-block;
             width: 5px;
             height: 5px;
@@ -233,10 +270,10 @@
             .time {
               margin: 22px 0 16px 0;
               white-space: nowrap;
-              color: darken(@light-grey,20%);
+              color: darken(@light-grey, 20%);
             }
           }
-          .blank{
+          .blank {
             flex: 1;
           }
           .result-wrapper {
@@ -254,7 +291,7 @@
             .text {
               margin: 22px 0 16px 0;
               white-space: nowrap;
-              color: darken(@light-grey,20%);
+              color: darken(@light-grey, 20%);
             }
           }
         }
@@ -266,6 +303,88 @@
           font-size: 13px;
         }
       }
+    }
+    .news-wrapper {
+      display: flex;
+      padding: 0 8px;
+      height: 32px;
+      line-height: 32px;
+      box-sizing: border-box;
+      background-color: lighten(@orange-color, 25%);
+      .icon-wrapper {
+        flex: 0 0 40px;
+        .box {
+          margin: 6px auto;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          border-radius: 50%;
+          text-align: center;
+          font-size: 0;
+          background-color: #e69f09;
+          color: #fff;
+          .icon {
+            display: inline-block;
+            font-size: @font-size-medium-x;
+            transform: scaleX(1.4);
+          }
+        }
+      }
+      .content-wrapper {
+        color: darken(@orange-color, 10%);
+        .click {
+          color: @blue-color;
+        }
+      }
+
+    }
+    .menu-component-wrapper {
+      .border-1px();
+    }
+    .headline-wrapper {
+      display: flex;
+      margin-bottom: 26px;
+      padding: 12px;
+      box-sizing: border-box;
+      background-color: #fff;
+      .title-wrapper {
+        padding: 0 6px;
+        flex: 0 0 46px;
+        .text {
+          padding-right: 8px;
+          font-size: @font-size-large;
+          font-family: STHupo, Weibei SC, YuanTi, STXingKai, STLiti;
+        }
+      }
+      .content-wrapper {
+        flex: 1;
+        .item-wrapper {
+          display: flex;
+          .icon-wrapper {
+            flex: 0 0 40px;
+            text-align: center;
+            font-size: 0;
+            .icon {
+              display: inline-block;
+              padding: 2px 4px;
+              border-radius: 2px;
+              border: 1px solid @orange-color;
+              color: @orange-color;
+              font-size: @font-size-small;
+              transform: scale(0.9);
+            }
+          }
+          .text {
+            border: 1px solid #fff;
+            padding: 1px 0;
+            margin-bottom: 3px;
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
     }
   }
 </style>

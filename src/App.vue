@@ -8,22 +8,22 @@
     <footer class="footer" v-if="crid==='LS'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
-          <img class="able img" v-lazy="'/src/static/footer/nav-home@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/class">
-          <img class="able img" v-lazy="'/src/static/footer/nav-user@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-user@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
           <p>班级</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
-          <img class="able img" v-lazy="'/src/static/footer/nav-setup@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-setup@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
         </router-link>
       </div>
@@ -31,22 +31,22 @@
     <footer class="footer" v-if="crid==='JZ'||crid==='BR'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
-          <img class="able img" v-lazy="'/src/static/footer/nav-home@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/message">
-          <img class="able img" v-lazy="'/src/static/footer/nav-user@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-user@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
           <p>消息</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
-          <img class="able img" v-lazy="'/src/static/footer/nav-setup@'+ratio+'x.png'">
-          <img class="disable img" v-lazy="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
+          <img class="able img" :src="'/src/static/footer/nav-setup@'+ratio+'x.png'">
+          <img class="disable img" :src="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
         </router-link>
       </div>
@@ -59,11 +59,10 @@
   import {getBaseInfo, getRole, getIntegrate, getVipInfo} from 'api/base'
   export default {
     name: 'app',
-    created () {
+    mounted () {
       var ratio = window.devicePixelRatio || 1
       ratio < 3 ? ratio = 2 : ratio = 3
       this.setRatio = ratio
-      console.log(this)
       if (this.$route.query.oid) {
         sessionStorage.oid = this.$route.query.oid
         sessionStorage.crid = ''
@@ -82,12 +81,17 @@
       },
       _getRole () {
         getRole().then((res) => {
+          console.log(this)
           this.setRole(res)
+          debugger
           if (res.length === 1) {
             sessionStorage.crid = res[0]
             this.setCRID(res[0])
             this._getVIPInfo()
-          } else if (sessionStorage.crid) {
+            this.$router.replace('/home')
+          } else if (!sessionStorage.crid || this.$route.path === '/') {
+            this.$router.replace('/role')
+          } else {
             this._getVIPInfo()
           }
         })

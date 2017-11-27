@@ -27,7 +27,6 @@
     },
     methods: {
       _initClass () {
-        debugger
         getClass().then((response) => {
           this.classList = response.data
         })

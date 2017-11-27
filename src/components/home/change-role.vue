@@ -36,6 +36,8 @@
     data () {
       return {}
     },
+    created () {
+    },
     methods: {
       close () {
         if (this.crid) {

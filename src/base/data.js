@@ -3,103 +3,38 @@
  */
 export const MenusJZ = [
   {
-    name: '我的应用',
+    name: '园钉训练营',
     list: [
       {
         'vip': '0',
         'icon': 'inform.png',
         'route': 'inform_tea.inform',
-        'text': '班级通知'
+        'text': '强化训练'
       }, {
         'vip': '0',
         'icon': 'work.png',
         'route': 'hwork_tea.class',
-        'text': '班级作业'
+        'text': '错题本'
       }, {
         'vip': '0',
         'icon': 'manage.png',
         'route': 'manage.attend_calendar',
-        'text': '常规管理'
+        'text': '作业精选'
       }, {
         'vip': '0',
         'icon': 'home-class.png',
         'route': 'c_class',
-        'text': '我的班级'
+        'text': '园钉试卷'
       }, {
         'vip': '0',
         'icon': 'mien.png',
         'route': 'classStyle_tea.list',
-        'text': '班级风采'
+        'text': '私信老师'
       }, {
         'vip': '0',
         'icon': 'vote.png',
         'route': 'vote_tea.vote',
-        'text': '班级投票'
-      }, {
-        'vip': '1',
-        'disabled': '1',
-        'icon': 'timed-train.png',
-        'route': 'stu_train',
-        'text': '同步训练',
-        'hot': true
-      }, {
-        'vip': '1',
-        'disabled': '1',
-        'icon': 'wrong.png',
-        'route': 'wrong_index',
-        'text': '错题本',
-        'hot': true
-      }, {
-        'vip': '1',
-        'disabled': '1',
-        'icon': 'time-test.png',
-        'route': 'work_select',
-        'text': '作业精选',
-        'hot': true
-      }, {
-        'vip': '0',
-        'icon': 'message.png',
-        'route': 'parent_list',
-        'text': '私信老师'
-      }, {
-        'vip': '0',
-        'icon': 'quick-bind.png',
-        'route': 'ksbd',
-        'text': '快速绑定'
-      }, {
-        'vip': '0',
-        'icon': 'grade-list.png',
-        'route': 'grade',
-        'text': '成绩单',
-        'new': true
-      }
-    ]
-  },
-  {
-    name: '与我相关',
-    list: [
-      {
-        'vip': '0',
-        'new': true,
-        'icon': 'wallet.png',
-        'route': 'wallet',
-        'text': '我的钱包'
-      }, {
-        'vip': '0',
-        'icon': 'resource.png',
-        'route': 'selfinfo',
-        'text': '我的资料'
-      }, {
-        'vip': '0',
-        'icon': 'vip.png',
-        'route': 'vip',
-        'text': '我的会员'
-      }, {
-        'vip': '0',
-        'icon': 'opinion.png',
-        'route': 'opinion',
-        'new': true,
-        'text': '我的建议'
+        'text': '我要提建议'
       }
     ]
   }

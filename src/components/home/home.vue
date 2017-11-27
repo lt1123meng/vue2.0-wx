@@ -20,7 +20,7 @@
       }
     },
     created: function () {
-      this._chooseRole()
+//      this._chooseRole()
     },
     computed: {
       ...mapGetters(['role', 'crid'])
