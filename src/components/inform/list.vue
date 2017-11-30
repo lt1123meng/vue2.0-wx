@@ -63,6 +63,7 @@
           type: 'lode',
           recordtime: this.list.length === 0 ? new Date().toDateString() : this.list[this.list.length - 1].createTime
         }).then((res) => {
+          this.requesting = false
           this.top = true
           res = res.data
           if (this.list === '') {

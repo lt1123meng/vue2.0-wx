@@ -11,27 +11,11 @@
         </router-link>
       </div>
     </div>
-    <router-view :classList="classList"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import {getClass} from 'api/class'
   export default {
-    data () {
-      return {
-        classList: ''
-      }
-    },
-    created () {
-      this._initClass()
-    },
-    methods: {
-      _initClass () {
-        getClass().then((response) => {
-          this.classList = response.data
-        })
-      }
-    }
   }
 </script>
 <style lang="less" rel="stylesheet/less">

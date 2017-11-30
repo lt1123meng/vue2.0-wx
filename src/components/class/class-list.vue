@@ -31,15 +31,40 @@
         </div>
         <div class="operate">
           <button class="modify">修改</button>
-          <button class="exit">退出</button>
+          <button class="exit" @click="quitClass">退出</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import {getClass} from 'api/class'
   export default {
-    props: ['classList']
+    data () {
+      return {
+        classList: ''
+      }
+    },
+    created () {
+      this._initClass()
+    },
+    methods: {
+      quitClass () {
+        this.$root.Dialog.confirm({
+          title: '您确定要退出吗？',
+          content: '退出之后无法恢复，退出之后无法恢复，退出之后无法恢复',
+          ok () {
+          },
+          cancel () {
+          }
+        })
+      },
+      _initClass () {
+        getClass().then((response) => {
+          this.classList = response.data
+        })
+      }
+    }
   }
 </script>
 <style lang="less" rel="stylesheet/less">

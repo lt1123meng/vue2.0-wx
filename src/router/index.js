@@ -35,6 +35,11 @@ const CreateClass = (resolve) => {
     resolve(module)
   })
 }
+const SetupMain = (resolve) => {
+  import('components/setup/main.vue').then((module) => {
+    resolve(module)
+  })
+}
 
 export default new Router({
   routes: [
@@ -70,6 +75,10 @@ export default new Router({
           components: {default: CreateClass}
         }
       ]
+    },
+    {
+      path: '/setup',
+      component: SetupMain
     }
   ]
 })

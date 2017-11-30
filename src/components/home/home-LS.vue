@@ -74,8 +74,9 @@
 <script type="text/ecmascript-6">
   import MenuList from 'base/menu-list/menu-list'
   import InformList from 'components/inform/list'
-  import {MenusLS} from 'base/data'
+  import {MenusLS} from 'common/js/data'
   import {mapGetters} from 'vuex'
+  //  import Toast from '../../common/plugins/TopTip'
   export default {
     data () {
       return {

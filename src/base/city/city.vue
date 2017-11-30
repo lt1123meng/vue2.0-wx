@@ -41,7 +41,7 @@
     </div>
   </div>
 </template>
-<script type=text/ecmascript-6>
+<script type='text/ecmascript-6'>
   var jsonp = require('jsonp')
   export default {
     data () {
@@ -203,7 +203,10 @@
                 }
               }
               this.current = data.address_detail.province + ' ' + data.address_detail.city
-              this.position = data.point.x + ' ' + data.point.y
+              this.position = {
+                x: data.point.x,
+                y: data.point.y
+              }
             }
           }
         )

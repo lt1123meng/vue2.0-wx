@@ -130,7 +130,7 @@
 </template>
 <script type="text/ecmascript-6">
   import MenuList from 'base/menu-list/menu-list'
-  import {MenusJZ} from 'base/data'
+  import {MenusJZ} from 'common/js/data'
   import {mapGetters} from 'vuex'
   export default {
     data () {

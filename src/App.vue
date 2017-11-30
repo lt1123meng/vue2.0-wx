@@ -59,13 +59,18 @@
   import {getBaseInfo, getRole, getIntegrate, getVipInfo} from 'api/base'
   export default {
     name: 'app',
+    created () {
+      this.hash = location.hash
+      console.log(location)
+      console.log(this.$route)
+    },
     mounted () {
       var ratio = window.devicePixelRatio || 1
       ratio < 3 ? ratio = 2 : ratio = 3
       this.setRatio = ratio
       if (this.$route.query.oid) {
-        sessionStorage.oid = this.$route.query.oid
-        sessionStorage.crid = this.$route.query.crid
+        if (this.$route.query.oid) sessionStorage.oid = this.$route.query.oid
+        if (this.$route.query.crid) sessionStorage.crid = this.$route.query.crid
       }
       this.setOID(sessionStorage.oid)
       this.setCRID(sessionStorage.crid)
@@ -89,15 +94,20 @@
             if (this.$route.query.route) {
               this.$router.replace(this.$route.query.route)
             } else {
-              this.$router.replace('/home')
+              if (this.hash.split('?')[0].length === 2) {
+                this.$router.replace('/home')
+              }
             }
           } else {
-            console.log(this.$route.path)
             if (!sessionStorage.crid) {
               this.$router.replace('/role')
             } else {
               if (this.$route.query.route) {
                 this.$router.replace(this.$route.query.route)
+              } else {
+                if (this.hash.split('?')[0].length === 2) {
+                  this.$router.replace('/home')
+                }
               }
               this._getVIPInfo()
             }
@@ -125,7 +135,7 @@
       })
     },
     computed: {
-      ...mapGetters(['ratio', 'oid', 'crid', 'viptea', 'vippar'])
+      ...mapGetters(['ratio', 'oid', 'crid', 'viptea', 'vippar', 'info', 'role', 'integrate'])
     }
   }
 </script>
@@ -181,5 +191,11 @@
         }
       }
     }
+  }
+
+  .bg-green {
+    width: 100%;
+    background-color: @green-color;
+    color: #fff;
   }
 </style>
