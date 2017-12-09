@@ -1,107 +1,115 @@
 <template>
-  <div class="setup-main-wrapper">
-    <div class="header-wrapper">
-      <div class="photo-wrapper">
-        <img class="photo" :src="info.userimgurl">
+  <div>
+    <div class="setup-main-wrapper">
+      <div class="header-wrapper">
+        <div class="photo-wrapper">
+          <img class="photo" :src="info.userimgurl">
+        </div>
+        <div class="info-wrapper">
+          <div class="name">
+            <span class="text">{{info.name}}</span>
+            <img class="vip" src="">
+          </div>
+          <div class="class-subject">
+            <span class="class">早培三班</span>
+            <span class="subject">语文老师</span>
+          </div>
+          <div class="class-detail">
+            详细班级
+          </div>
+        </div>
+        <div class="qrcode-wrapper">
+          <img src="/src/static/qrcode.png" class="qrcode">
+          <img src="/src/static/icon/icon-back.png" class="next">
+        </div>
       </div>
-      <div class="info-wrapper">
-        <div class="name">
-          <span class="text">{{info.name}}</span>
-          <img class="vip" src="">
+      <div class="main-operation-wrapper">
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/menu/inform.png">
+          </div>
+          <div class="text">我的钱包</div>
         </div>
-        <div class="class-subject">
-          <span class="class">早培三班</span>
-          <span class="subject">语文老师</span>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/menu/inform.png">
+          </div>
+          <div class="text">我的订单</div>
         </div>
-        <div class="class-detail">
-          详细班级
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/menu/inform.png">
+          </div>
+          <div class="text">切换角色</div>
         </div>
       </div>
-      <div class="qrcode-wrapper">
-        <img src="/src/static/qrcode.png" class="qrcode">
-        <img src="/src/static/icon/icon-back.png" class="next">
+      <div class="poster-wrapper">
+        <img class="img" src="/src/static/poster/index.jpg">
+      </div>
+      <div class="list-wrapper">
+        <div class="item-wrapper" @click="goBindRole">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+          </div>
+          <div class="name">快速绑定</div>
+          <div class="addition">绑定角色</div>
+          <div class="next">
+            <img src="/src/static/icon/icon-back.png" class="icon">
+          </div>
+        </div>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+          </div>
+          <div class="name">VIP会员</div>
+          <div class="addition">开通会员</div>
+          <div class="next">
+            <img src="/src/static/icon/icon-back.png" class="icon">
+          </div>
+        </div>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+          </div>
+          <div class="name">VIP会员</div>
+          <div class="addition">开通会员</div>
+          <div class="next">
+            <img src="/src/static/icon/icon-back.png" class="icon">
+          </div>
+        </div>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+          </div>
+          <div class="name">VIP会员</div>
+          <div class="addition">开通会员</div>
+          <div class="next">
+            <img src="/src/static/icon/icon-back.png" class="icon">
+          </div>
+        </div>
+        <div class="item-wrapper">
+          <div class="icon-wrapper">
+            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+          </div>
+          <div class="name">VIP会员</div>
+          <div class="addition">开通会员</div>
+          <div class="next">
+            <img src="/src/static/icon/icon-back.png" class="icon">
+          </div>
+        </div>
       </div>
     </div>
-    <div class="main-operation-wrapper">
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/menu/inform.png">
-        </div>
-        <div class="text">我的钱包</div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/menu/inform.png">
-        </div>
-        <div class="text">我的订单</div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/menu/inform.png">
-        </div>
-        <div class="text">切换角色</div>
-      </div>
-    </div>
-    <div class="poster-wrapper">
-      <img class="img" src="/src/static/poster/index.jpg">
-    </div>
-    <div class="list-wrapper">
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/icon/icon-smile1.jpg">
-        </div>
-        <div class="name">快速绑定</div>
-        <div class="addition">绑定角色</div>
-        <div class="next">
-          <img src="/src/static/icon/icon-back.png" class="icon">
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/icon/icon-smile1.jpg">
-        </div>
-        <div class="name">VIP会员</div>
-        <div class="addition">开通会员</div>
-        <div class="next">
-          <img src="/src/static/icon/icon-back.png" class="icon">
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/icon/icon-smile1.jpg">
-        </div>
-        <div class="name">VIP会员</div>
-        <div class="addition">开通会员</div>
-        <div class="next">
-          <img src="/src/static/icon/icon-back.png" class="icon">
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/icon/icon-smile1.jpg">
-        </div>
-        <div class="name">VIP会员</div>
-        <div class="addition">开通会员</div>
-        <div class="next">
-          <img src="/src/static/icon/icon-back.png" class="icon">
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="icon-wrapper">
-          <img class="icon" src="/src/static/icon/icon-smile1.jpg">
-        </div>
-        <div class="name">VIP会员</div>
-        <div class="addition">开通会员</div>
-        <div class="next">
-          <img src="/src/static/icon/icon-back.png" class="icon">
-        </div>
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script type='text/ecmascript-6'>
   import {mapGetters} from 'vuex'
   export default {
+    methods: {
+      goBindRole () {
+        this.$router.push('/setup/bind/code')
+      }
+    },
     computed: {
       ...mapGetters(['info'])
     }

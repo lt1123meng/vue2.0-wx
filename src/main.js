@@ -16,7 +16,6 @@ import store from './store'
 import 'common/less/index.less'
 import TopTip from 'common/plugins/TopTip'
 import Dialog from 'common/plugins/Dialog'
-console.log(Dialog)
 Vue.use(InfiniteScroll)
 Vue.use(Lazyload)
 Vue.component(Loadmore.name, Loadmore)

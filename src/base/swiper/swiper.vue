@@ -1,11 +1,11 @@
 <template>
-  <div class="swiper"
+  <div class="swiper-outer-wrapper"
        :class="[direction, {'dragging': dragging}]"
        @touchstart="_onTouchStart"
        @mousedown="_onTouchStart"
        @wheel="_onWheel">
     <div class="swiper-wrap"
-         v-ref="swiper-wrap"
+         ref="swiperWrap"
          :style="{
                 'transform' : 'translate3d(' + translateX + 'px,' + translateY + 'px, 0)',
                 'transition-duration': transitionDuration + 'ms'
@@ -16,9 +16,9 @@
     <div class="swiper-pagination"
          v-show="paginationVisible">
             <span class="swiper-pagination-bullet"
-                  :class="{'active': $index+1===currentPage}"
-                  v-for="slide in slideEls"
-                  @click="paginationClickable && setPage($index+1)"></span>
+                  :class="{'active': index+1===currentPage}"
+                  v-for="(slide,index) in slideEls"
+                  @click="paginationClickable && setPage(index+1)"></span>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@
     props: {
       direction: {
         type: String,
-        default: VERTICAL,
+        default: HORIZONTAL,
         validator: (value) => [VERTICAL, HORIZONTAL].indexOf(value) > -1
       },
       mousewheelControl: {
@@ -74,11 +74,14 @@
         transitionDuration: 0
       }
     },
-    ready () {
+    mounted () {
       debugger
       this._onTouchMove = this._onTouchMove.bind(this)
       this._onTouchEnd = this._onTouchEnd.bind(this)
-      this.slideEls = [].map.call(this.$els.swiperWrap.children, el => el)
+      console.log(this.$refs)
+      console.log(this.$refs.swiperWrap)
+      this.slideEls = [].map.call(this.$refs.swiperWrap.children, el => el)
+      console.log(this.slideEls)
       if (this.loop) {
         this.$nextTick(function () {
           this._createLoop()
@@ -162,6 +165,7 @@
         this.dragging = false
         this.transitionDuration = this.speed
         var isQuickAction = new Date().getTime() - this.startTime < 1000
+        debugger
         if ((this.delta < -100) || (isQuickAction && this.delta < -15)) {
           this.next()
         } else if ((this.delta > 100) || (isQuickAction && this.delta > 15)) {
@@ -235,7 +239,7 @@
       },
       _createLoop () {
         var propName = this.isHorizontal() ? 'clientWidth' : 'clientHeight'
-        var swiperWrapEl = this.$els.swiperWrap
+        var swiperWrapEl = this.$refs.swiperWrap
         var duplicateFirstChild = swiperWrapEl.firstElementChild.cloneNode(true)
         var duplicateLastChild = swiperWrapEl.lastElementChild.cloneNode(true)
         swiperWrapEl.insertBefore(duplicateLastChild, swiperWrapEl.firstElementChild)
@@ -245,11 +249,3 @@
     }
   }
 </script>
-
-<template>
-</template>
-<script type='text/ecmascript-6'>
-  export default {}
-</script>
-<style lang='less' rel='stylesheet/less'>
-</style>

@@ -41,7 +41,7 @@ const TopTip = (options = {}) => {
   var instance = getAnInstance()
   clearTimeout(instance.timer)
   instance.closed = false
-  let duration = options.duration || 2000
+  let duration = options.duration || 1400
   instance.message = typeof options === 'string' ? options : options.message
   instance.type = options.type || 'success'
   document.body.appendChild(instance.$el)

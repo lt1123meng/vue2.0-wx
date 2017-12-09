@@ -58,6 +58,14 @@
           cancel () {
           }
         })
+        this.$root.Dialog.confirm({
+          title: '您确定要退出吗？',
+          content: '退出之后无法恢复，退出之后无法恢复，退出之后无法恢复',
+          ok () {
+          },
+          cancel () {
+          }
+        })
       },
       _initClass () {
         getClass().then((response) => {

@@ -26,10 +26,8 @@
     },
     methods: {
       confirmEvent () {
-        debugger
       },
       cancelEvent () {
-        debugger
       }
     }
   }
@@ -43,6 +41,7 @@
     background-color: rgba(7, 17, 27, 0.2);
     z-index: 1000;
     transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
     .Lui-dialog-wrapper {
       position: absolute;
       top: 50%;

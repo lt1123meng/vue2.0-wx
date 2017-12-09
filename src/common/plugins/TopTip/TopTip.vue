@@ -35,7 +35,7 @@
     background-color: #fff;
     z-index: 1000;
     box-shadow: 0 0 10px 0 rgba(7, 17, 27, 0.1);
-    transition: transform .5s ease-in-out;
+    transition: transform .3s ease-in-out;
     .Lui-content-wrapper {
       display: flex;
       padding: 8px;

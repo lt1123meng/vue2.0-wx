@@ -16,7 +16,6 @@
             {{orgValidatorText}}
           </div>
         </div>
-
         <div class="item-wrapper">
           <div class="content">
             <div class="name">班级名称</div>
@@ -95,7 +94,6 @@
         })
       },
       onchange (item) {
-        console.log(item)
         this.selected = item
       },
       _initSubject () {
@@ -219,12 +217,11 @@
       padding: 20px 10%;
       box-sizing: border-box;
       .box {
-        .button-bg(@blue-color);
         width: 100%;
         border-radius: 4px;
-        filter: grayscale(100%);
+        .button-bg(@light-grey);
         &.success {
-          filter: grayscale(0);
+          .button-bg(@blue-color);
         }
       }
     }

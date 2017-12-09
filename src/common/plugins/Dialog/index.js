@@ -8,24 +8,25 @@ var DialogPool = []
 var DialogConstructor = Vue.extend(DialogVue)
 DialogConstructor.prototype.close = function () {
   this.visible = false
-  this.$el.addEventListener('transitionend', removeDom)
+  this.timer = setTimeout(() => {
+    removeDom(this.$el)
+  }, 300)
 }
 
 var getAnInstance = function () {
   if (DialogPool.length > 0) {
     var instance = DialogPool[0]
     DialogPool.splice(0, 1)
-    instance.$el.removeEventListener('transitionend', removeDom)
     return instance
   }
   return new DialogConstructor({
     el: document.createElement('div')
   })
 }
-var removeDom = function () {
+var removeDom = function (dom) {
   running = false
-  if (event.target.parentNode) {
-    event.target.parentNode.removeChild(event.target)
+  if (dom.parentNode) {
+    dom.parentNode.removeChild(dom)
   }
 }
 var initInstance = function (options = {}, type) {
@@ -49,7 +50,6 @@ var initInstance = function (options = {}, type) {
     if (options.cancel) options.cancel()
   }
   instance.cancelShow = type === 'confirm' ? 'true' : 'false'
-
   document.body.appendChild(instance.$el)
   clearTimeout(instance.timer)
   Vue.nextTick(() => {

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="all-container">
+    <div class="all-container" ref="container">
       <keep-alive>
         <router-view/>
       </keep-alive>
     </div>
-    <footer class="footer" v-if="crid==='LS'">
+    <footer class="footer" ref="footerLS" v-show="crid==='LS'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
           <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
@@ -28,7 +28,7 @@
         </router-link>
       </div>
     </footer>
-    <footer class="footer" v-if="crid==='JZ'||crid==='BR'">
+    <footer class="footer" ref="footerXS" v-show="crid==='JZ'||crid==='BR'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
           <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
@@ -61,10 +61,12 @@
     name: 'app',
     created () {
       this.hash = location.hash
-      console.log(location)
-      console.log(this.$route)
     },
     mounted () {
+      document.body.style.height = window.innerHeight + 'px'
+      this.$refs.container.style.height = window.innerHeight + 'px'
+      this.$refs.footerLS.style.top = window.innerHeight - 50 + 'px'
+      this.$refs.footerXS.style.top = window.innerHeight - 50 + 'px'
       var ratio = window.devicePixelRatio || 1
       ratio < 3 ? ratio = 2 : ratio = 3
       this.setRatio = ratio
@@ -155,8 +157,7 @@
   }
 
   .footer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     height: 50px;
     width: 100%;
     display: flex;

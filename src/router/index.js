@@ -2,16 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import Home from 'components/home/home'
-// import HomeChangeRole from 'components/home/change-role'
+// import RoleChangeRole from 'components/home/change-role'
 Vue.use(Router)
 
 const Home = (resolve) => {
   import('components/home/home').then((module) => {
-    resolve(module)
-  })
-}
-const HomeChangeRole = (resolve) => {
-  import('components/home/change-role').then((module) => {
     resolve(module)
   })
 }
@@ -40,12 +35,26 @@ const SetupMain = (resolve) => {
     resolve(module)
   })
 }
-
+const RoleChangeRole = (resolve) => {
+  import('components/role/change-role').then((module) => {
+    resolve(module)
+  })
+}
+const RoleBindRole = (resolve) => {
+  import('components/role/bind-code').then((module) => {
+    resolve(module)
+  })
+}
+const VipOpen = (resolve) => {
+  import('components/vip/open').then((module) => {
+    resolve(module)
+  })
+}
 export default new Router({
   routes: [
     {
       path: '/role',
-      components: {default: HomeChangeRole}
+      components: {default: RoleChangeRole}
     },
     {
       path: '/home',
@@ -53,7 +62,7 @@ export default new Router({
       children: [
         {
           path: 'role',
-          components: {default: HomeChangeRole}
+          components: {default: RoleChangeRole}
         },
         {
           path: 'student',
@@ -78,7 +87,17 @@ export default new Router({
     },
     {
       path: '/setup',
-      component: SetupMain
+      component: SetupMain,
+      children: [
+        {
+          path: 'bind/:code',
+          components: {default: RoleBindRole}
+        }
+      ]
+    },
+    {
+      path: '/open',
+      component: VipOpen
     }
   ]
 })

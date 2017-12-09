@@ -36,10 +36,10 @@
         <p class="text">排行榜</p>
       </div>
       <div class="vip wrapper">
-        <button class="button">
+        <router-link tag="button" :to="'open'" class="button">
           开通VIP
           <span class="tag">HOT</span>
-        </button>
+        </router-link>
       </div>
     </div>
     <menu-list :menu="menu"></menu-list>
