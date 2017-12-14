@@ -13,7 +13,7 @@ import {
 import App from './App'
 import router from './router'
 import store from './store'
-import 'common/less/index.less'
+import './common/less/index.less'
 import TopTip from 'common/plugins/TopTip'
 import Dialog from 'common/plugins/Dialog'
 Vue.use(InfiniteScroll)
