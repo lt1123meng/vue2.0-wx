@@ -104,9 +104,10 @@
 </template>
 <script type='text/ecmascript-6'>
   import {mapGetters} from 'vuex'
+
   export default {
     methods: {
-      goBindRole () {
+      goBindRole() {
         this.$router.push('/setup/bind/code')
       }
     },

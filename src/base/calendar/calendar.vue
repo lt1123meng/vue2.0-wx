@@ -40,8 +40,9 @@
 </template>
 <script type="text/ecmascript-6">
   import moment from 'moment'
+
   export default {
-    data () {
+    data() {
       return {
         calendarCurrent: {},
         calendarSelect: '',
@@ -50,7 +51,7 @@
         calendarToday: {}
       }
     },
-    created: function () {
+    created() {
       var selectMonent
       if (!this.calendarSelect) {
         selectMonent = moment()
@@ -77,13 +78,13 @@
       this._toParentDate()
     },
     methods: {
-      prevMonth () {
+      prevMonth() {
         this._prevMonth()
       },
-      nextMonth () {
+      nextMonth() {
         this._nextMonth()
       },
-      chooseDay (day, canChoose, choosed) {
+      chooseDay(day, canChoose, choosed) {
         if (choosed) return
         if (!canChoose) return
         if (day === this.calendarSelect.day) return
@@ -95,10 +96,10 @@
         this._toParentDate()
         this._initCalendar()
       },
-      _toParentDate () {
+      _toParentDate() {
         this.$emit('calendarChoose', this.calendarSelect)
       },
-      _prevMonth () {
+      _prevMonth() {
         if (this.calendarCurrent.month === 1) {
           this.calendarCurrent.year -= 1
           this.calendarCurrent.month = 12
@@ -107,7 +108,7 @@
         }
         this._initCalendar()
       },
-      _nextMonth: function () {
+      _nextMonth() {
         if (this.calendarCurrent.year === moment().year() && this.calendarCurrent.month === moment().month() + 1) {
           return
         }
@@ -119,13 +120,13 @@
         }
         this._initCalendar()
       },
-      _initCalendar () {
+      _initCalendar() {
         this.currentMonent = moment(this.calendarCurrent.year + '-' + this.calendarCurrent.month, 'YYYY-MM')
         this.prevMonent = this.currentMonent.clone().subtract(1, 'M')
         this.nextMonent = this.currentMonent.clone().add(1, 'M')
         this._initDays()
       },
-      _initDays () {
+      _initDays() {
         var daysList = []
         var daysInMonth = this.currentMonent.daysInMonth()
         var dayStartWeek = this.currentMonent.date(1).day()

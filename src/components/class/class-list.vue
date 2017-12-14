@@ -6,7 +6,7 @@
     <div v-else-if="classList.length===0">
       没有数据
     </div>
-    <div v-else class="class-item" v-for="item in classList">
+    <div class="class-item" v-for="item in classList" v-else>
       <div class="info-code">
         <div class="info">
           <div class="class-name">{{item.name}}</div>
@@ -39,35 +39,36 @@
 </template>
 <script type="text/ecmascript-6">
   import {getClass} from 'api/class'
+
   export default {
-    data () {
+    data() {
       return {
         classList: ''
       }
     },
-    created () {
+    created() {
       this._initClass()
     },
     methods: {
-      quitClass () {
+      quitClass() {
         this.$root.Dialog.confirm({
           title: '您确定要退出吗？',
           content: '退出之后无法恢复，退出之后无法恢复，退出之后无法恢复',
-          ok () {
+          ok() {
           },
-          cancel () {
+          cancel() {
           }
         })
         this.$root.Dialog.confirm({
           title: '您确定要退出吗？',
           content: '退出之后无法恢复，退出之后无法恢复，退出之后无法恢复',
-          ok () {
+          ok() {
           },
-          cancel () {
+          cancel() {
           }
         })
       },
-      _initClass () {
+      _initClass() {
         getClass().then((response) => {
           this.classList = response.data
         })

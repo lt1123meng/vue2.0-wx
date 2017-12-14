@@ -44,30 +44,32 @@
     </div>
     <menu-list :menu="menu"></menu-list>
     <div class="common-data-wrapper">
-      <mt-navbar v-model="navSelected">
-        <mt-tab-item id="1">通知</mt-tab-item>
-        <mt-tab-item id="2">作业</mt-tab-item>
-        <mt-tab-item id="3">投票</mt-tab-item>
-        <mt-tab-item id="4">常规</mt-tab-item>
-        <mt-tab-item id="5">风采</mt-tab-item>
-      </mt-navbar>
-      <mt-tab-container ref="container" v-model="navSelected">
-        <mt-tab-container-item id="1">
+      <div class="nav-wrapper">
+        <div class="box-wrapper" @click="navSelected='1'">
+          <span class="text" :class="{'active':navSelected=='1'}">通知</span>
+        </div>
+        <div class="box-wrapper" @click="navSelected='2'">
+          <span class="text" :class="{'active':navSelected=='2'}">作业</span>
+        </div>
+        <div class="box-wrapper" @click="navSelected='3'">
+          <span class="text" :class="{'active':navSelected=='3'}">投票</span>
+        </div>
+        <div class="box-wrapper" @click="navSelected='4'">
+          <span class="text" :class="{'active':navSelected=='4'}">常规</span>
+        </div>
+        <div class="box-wrapper" @click="navSelected='5'">
+          <span class="text" :class="{'active':navSelected=='5'}">风采</span>
+        </div>
+      </div>
+      <div class="nav-content" ref="container">
+        <div class="wrapper" v-if="navSelected=='1'">
           <inform-list></inform-list>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="2">
-          <div class="item" v-for="n in 4" :key="n" :title="'测试 ' + n">{{n}}</div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="3">
-          <div class="item" v-for="n in 6" :key="n" :title="'选项 ' + n">{{n}}</div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="4">
-          <div class="item" v-for="n in 6" :key="n" :title="'选项 ' + n">{{n}}</div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="5">
-          <div class="item" v-for="n in 6" :key="n" :title="'选项 ' + n">{{n}}</div>
-        </mt-tab-container-item>
-      </mt-tab-container>
+        </div>
+        <div class="wrapper" v-if="navSelected=='2'"></div>
+        <div class="wrapper" v-if="navSelected=='3'"></div>
+        <div class="wrapper" v-if="navSelected=='4'"></div>
+        <div class="wrapper" v-if="navSelected=='5'"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -78,7 +80,7 @@
   import {mapGetters} from 'vuex'
   //  import Toast from '../../common/plugins/TopTip'
   export default {
-    data () {
+    data() {
       return {
         centerShow: false,
         scroll: '',
@@ -87,10 +89,10 @@
         navSelected: '1'
       }
     },
-    created () {
+    created() {
     },
-    mounted: function () {
-      this.$nextTick(function () {
+    mounted() {
+      this.$nextTick(() => {
         this._initHeight()
       })
     },
@@ -98,18 +100,18 @@
       ...mapGetters(['ratio', 'crid', 'role', 'info', 'integrate'])
     },
     methods: {
-      calenderClick () {
+      calenderClick() {
         this.$emit('calenderClick')
       },
-      chooseRole () {
+      chooseRole() {
         if (this.role.length === 2) {
           this.$router.push('/home/role')
         }
       },
-      _initHeight () {
-        this.$refs.container.$el.style.height = window.innerHeight - 50 - 36 + 'px'
-        this.$refs.container.$el.style.overflow = 'scroll'
-        this.$refs.container.$el.style.position = 'relative'
+      _initHeight() {
+        this.$refs.container.style.height = window.innerHeight - 50 - 36 + 'px'
+        this.$refs.container.style.overflow = 'scroll'
+        this.$refs.container.style.position = 'relative'
       }
     },
     components: {
@@ -220,25 +222,21 @@
     }
     .common-data-wrapper {
       margin-top: 8px;
-      .mint-navbar {
-        .border-1px();
-        .mint-tab-item {
-          padding: 0;
-          height: 36px;
-          line-height: 36px;
-          &.is-selected {
-            border-bottom: 0;
-            .mint-tab-item-label {
+      .nav-wrapper {
+        display: flex;
+        background-color: #fff;
+        .box-wrapper {
+          flex: 1;
+          text-align: center;
+          .text {
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+            &.active {
               color: @blue-color;
               border-bottom: 3px solid @blue-color;
               box-sizing: border-box;
             }
-          }
-          .mint-tab-item-label {
-            margin: 0 auto;
-            height: inherit;
-            line-height: inherit;
-            width: 30px;
           }
         }
       }

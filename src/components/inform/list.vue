@@ -38,19 +38,20 @@
 <script type="text/ecmascript-6">
   import LoadMore from 'base/loadmore/loadmore'
   import {getInformList} from 'api/inform'
+
   export default {
-    data () {
+    data() {
       return {
         list: '',
         finish: true,
         top: false
       }
     },
-    created () {
+    created() {
       this.requesting = false
     },
     methods: {
-      _initLoadMoreList (tag) {
+      _initLoadMoreList(tag) {
         if (tag) {
           this.top = false
           this.list = ''

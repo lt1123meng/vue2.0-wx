@@ -44,7 +44,7 @@
 <script type='text/ecmascript-6'>
   var jsonp = require('jsonp')
   export default {
-    data () {
+    data() {
       return {
         current: '正在获取地理位置……',
         provinceShow: false,
@@ -150,30 +150,30 @@
         ]
       }
     },
-    created () {
+    created() {
       this._getLocation()
     },
     methods: {
-      hide () {
+      hide() {
         this.provinceShow = false
         this.cityShow = false
       },
-      backProvince () {
+      backProvince() {
         this.provinceShow = true
         this.cityShow = false
       },
-      choose () {
+      choose() {
         this.chooseFlag = true
         this.provinceShow = true
       },
-      chooseThisProvince (index) {
+      chooseThisProvince(index) {
         event.stopPropagation()
         this.provinceIndex = index
         this.provinceShow = false
         this.cityShow = true
         this.cityIndex = ''
       },
-      chooseThisCity (index) {
+      chooseThisCity(index) {
         event.stopPropagation()
         this.cityIndex = index
         this.provinceShow = false
@@ -181,7 +181,7 @@
         this.current =
           this.cityList[this.provinceIndex].name + ' ' + this.cityList[this.provinceIndex].list[this.cityIndex]
       },
-      _getLocation () {
+      _getLocation() {
         jsonp(
           'https://api.map.baidu.com/location/ip?ak=r2RMhOo3dGPkQKQuw3SIhYSFVchWPw30&coor=bd09ll',
           null,

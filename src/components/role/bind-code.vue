@@ -121,8 +121,9 @@
   import {getSubject} from 'api/base'
   import {getClassByCode} from 'api/roleCode'
   import iSelect from 'base/select/iSelect'
+
   export default {
-    data () {
+    data() {
       return {
         code: null,
         subject: [],
@@ -135,11 +136,11 @@
         relation: 'FQ'
       }
     },
-    created () {
+    created() {
       this._initSubject()
     },
     methods: {
-      searchClassByCode () {
+      searchClassByCode() {
         if (!this.code || this.code.length < 6) {
           this.$root.TopTip({
             message: '请输入正确的班级标识符',
@@ -159,16 +160,16 @@
             }
           })
       },
-      chooseIdentity (type) {
+      chooseIdentity(type) {
         this.identity = type
       },
-      chooseRelation (relation) {
+      chooseRelation(relation) {
         this.relation = relation
       },
-      onchange (item) {
+      onchange(item) {
         this.selected = item
       },
-      _initSubject () {
+      _initSubject() {
         getSubject().then((data) => {
           this.selected = data[0]
           this.subject = data

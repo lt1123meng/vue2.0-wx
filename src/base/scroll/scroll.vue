@@ -77,21 +77,21 @@
         default: 20
       }
     },
-    data () {
+    data() {
       return {
         success: false
       }
     },
-    created () {
+    created() {
       this.oldData = []
     },
-    mounted () {
+    mounted() {
       setTimeout(() => {
         this._initScroll()
       }, 20)
     },
     methods: {
-      _initScroll () {
+      _initScroll() {
         if (!this.$refs.wrapper) {
           return
         }
@@ -146,24 +146,24 @@
           })
         }
       },
-      disable () {
+      disable() {
         this.scroll && this.scroll.disable()
       },
-      enable () {
+      enable() {
         this.scroll && this.scroll.enable()
       },
-      refresh () {
+      refresh() {
         this.scroll && this.scroll.refresh()
       },
-      scrollTo () {
+      scrollTo() {
         this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
       },
-      scrollToElement () {
+      scrollToElement() {
         this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
       }
     },
     computed: {
-      finish () {
+      finish() {
         debugger
         if ((this.data && this.data.length % limit === 0) && this.data !== this.oldData) {
           this.oldData = this.data
@@ -174,7 +174,7 @@
       }
     },
     watch: {
-      data (val, old) {
+      data(val, old) {
         setTimeout(() => {
           this.$nextTick(() => {
             this.refresh()

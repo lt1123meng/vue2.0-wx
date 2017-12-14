@@ -28,6 +28,7 @@
   const HORIZONTAL = 'horizontal'
   export default {
     props: {
+      // 方向默认水平
       direction: {
         type: String,
         default: HORIZONTAL,
@@ -37,10 +38,12 @@
         type: Boolean,
         default: true
       },
+      // 不允许出现拖动
       performanceMode: {
         type: Boolean,
-        default: false
+        default: true
       },
+      // 滑动底部小圆点
       paginationVisible: {
         type: Boolean,
         default: false
@@ -49,16 +52,18 @@
         type: Boolean,
         default: false
       },
+      // 是否循环
       loop: {
         type: Boolean,
         default: false
       },
+      // 动画执行时间
       speed: {
         type: Number,
         default: 500
       }
     },
-    data () {
+    data() {
       return {
         currentPage: 1,
         lastPage: 1,
@@ -74,16 +79,14 @@
         transitionDuration: 0
       }
     },
-    mounted () {
+    mounted() {
       debugger
       this._onTouchMove = this._onTouchMove.bind(this)
       this._onTouchEnd = this._onTouchEnd.bind(this)
-      console.log(this.$refs)
-      console.log(this.$refs.swiperWrap)
       this.slideEls = [].map.call(this.$refs.swiperWrap.children, el => el)
       console.log(this.slideEls)
       if (this.loop) {
-        this.$nextTick(function () {
+        this.$nextTick(() => {
           this._createLoop()
           this.setPage(this.currentPage, true)
         })
@@ -92,7 +95,7 @@
       }
     },
     methods: {
-      next () {
+      next() {
         var page = this.currentPage
         if (page < this.slideEls.length || this.loop) {
           this.setPage(page + 1)
@@ -100,7 +103,7 @@
           this._revert()
         }
       },
-      prev () {
+      prev() {
         var page = this.currentPage
         if (page > 1 || this.loop) {
           this.setPage(page - 1)
@@ -108,7 +111,7 @@
           this._revert()
         }
       },
-      setPage (page, noAnimation) {
+      setPage(page, noAnimation) {
         var self = this
         this.lastPage = this.currentPage
         if (page === 0) {
@@ -133,13 +136,13 @@
           this._onTransitionStart()
         }
       },
-      isHorizontal () {
+      isHorizontal() {
         return this.direction === HORIZONTAL
       },
-      isVertical  () {
+      isVertical() {
         return this.direction === VERTICAL
       },
-      _onTouchStart (e) {
+      _onTouchStart(e) {
         this.startPos = this._getTouchPos(e)
         this.delta = 0
         this.startTranslate = this._getTranslateOfPage(this.currentPage)
@@ -151,9 +154,10 @@
         document.addEventListener('mousemove', this._onTouchMove, false)
         document.addEventListener('mouseup', this._onTouchEnd, false)
       },
-      _onTouchMove (e) {
+      _onTouchMove(e) {
         this.delta = this._getTouchPos(e) - this.startPos
-        if (!this.performanceMode) {
+        debugger
+        if (this.performanceMode) {
           this._setTranslate(this.startTranslate + this.delta)
           this.$emit('slider-move', this._getTranslate())
         }
@@ -161,7 +165,7 @@
           e.preventDefault()
         }
       },
-      _onTouchEnd (e) {
+      _onTouchEnd(e) {
         this.dragging = false
         this.transitionDuration = this.speed
         var isQuickAction = new Date().getTime() - this.startTime < 1000
@@ -178,7 +182,7 @@
         document.removeEventListener('mousemove', this._onTouchMove)
         document.removeEventListener('mouseup', this._onTouchEnd)
       },
-      _onWheel (e) {
+      _onWheel(e) {
         if (this.mousewheelControl) {
           // TODO Support apple magic mouse and trackpad.
           if (!this.transitioning) {
@@ -191,14 +195,14 @@
           if (this._isPageChanged()) e.preventDefault()
         }
       },
-      _revert () {
+      _revert() {
         this.setPage(this.currentPage)
       },
-      _getTouchPos (e) {
+      _getTouchPos(e) {
         var key = this.isHorizontal() ? 'pageX' : 'pageY'
         return e.changedTouches ? e.changedTouches[0][key] : e[key]
       },
-      _onTransitionStart () {
+      _onTransitionStart() {
         this.transitioning = true
         this.transitionDuration = this.speed
         if (this._isPageChanged()) {
@@ -207,7 +211,7 @@
           this.$emit('slide-revert-start', this.currentPage)
         }
       },
-      _onTransitionEnd () {
+      _onTransitionEnd() {
         this.transitioning = false
         this.transitionDuration = 0
         this.delta = 0
@@ -217,27 +221,27 @@
           this.$emit('slide-revert-end', this.currentPage)
         }
       },
-      _isPageChanged () {
+      _isPageChanged() {
         return this.lastPage !== this.currentPage
       },
-      _setTranslate (value) {
+      _setTranslate(value) {
         var translateName = this.isHorizontal() ? 'translateX' : 'translateY'
         this[translateName] = value
       },
-      _getTranslate () {
+      _getTranslate() {
         var translateName = this.isHorizontal() ? 'translateX' : 'translateY'
         return this[translateName]
       },
-      _getTranslateOfPage (page) {
+      _getTranslateOfPage(page) {
         if (page === 0) return 0
         var propName = this.isHorizontal() ? 'clientWidth' : 'clientHeight'
         return -[].reduce.call(this.slideEls,
-            function (total, el, i) {
-              return i > page - 2 ? total : total + el[propName]
-            },
-            0) + this.translateOffset
+          function (total, el, i) {
+            return i > page - 2 ? total : total + el[propName]
+          },
+          0) + this.translateOffset
       },
-      _createLoop () {
+      _createLoop() {
         var propName = this.isHorizontal() ? 'clientWidth' : 'clientHeight'
         var swiperWrapEl = this.$refs.swiperWrap
         var duplicateFirstChild = swiperWrapEl.firstElementChild.cloneNode(true)

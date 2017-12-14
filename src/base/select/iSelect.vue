@@ -26,7 +26,7 @@
 </template>
 <script type="text/ecmascript-6">
   export default {
-    data () {
+    data() {
       return {
         show: false
       }
@@ -49,10 +49,10 @@
         required: true
       }
     },
-    created () {
+    created() {
     },
     computed: {
-      select () {
+      select() {
         if (this.selected.name === '') {
           if (this.data[0]) {
             return this.data[0]
@@ -68,11 +68,11 @@
       }
     },
     methods: {
-      selectThis (item) {
+      selectThis(item) {
         this.$emit('onchange', item)
         this._show()
       },
-      _show () {
+      _show() {
         this.show = !this.show
       }
     }

@@ -132,8 +132,9 @@
   import MenuList from 'base/menu-list/menu-list'
   import {MenusJZ} from 'common/js/data'
   import {mapGetters} from 'vuex'
+
   export default {
-    data () {
+    data() {
       return {
         info: {},
         centerShow: false,
@@ -142,21 +143,21 @@
         menu: MenusJZ
       }
     },
-    created: function () {
+    created() {
     },
     computed: {
       ...mapGetters(['ratio', 'crid', 'role', 'student', 'vippar'])
     },
     methods: {
-      calenderClick () {
+      calenderClick() {
         this.$emit('calenderClick')
       },
-      chooseRole () {
+      chooseRole() {
         if (this.role.length === 2) {
           this.$router.push('/home/role')
         }
       },
-      goChangeStudent () {
+      goChangeStudent() {
         if (this.vippar.length < 2) return
         this.$router.push('/home/student')
       }

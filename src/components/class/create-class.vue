@@ -56,8 +56,9 @@
   import {getSubject} from 'api/base'
   import City from 'base/city/city'
   import iSelect from 'base/select/iSelect'
+
   export default {
-    data () {
+    data() {
       return {
         organize: '',
         classname: '',
@@ -70,12 +71,12 @@
         classValidatorText: ''
       }
     },
-    created () {
+    created() {
       this._initSubject()
       this.flag = false
     },
     methods: {
-      quickCreate () {
+      quickCreate() {
         if (!(this.classValidator && this.orgValidator)) return
         if (this.flag) return
         this.flag = true
@@ -93,22 +94,22 @@
           this.$router.push('/class/list')
         })
       },
-      onchange (item) {
+      onchange(item) {
         this.selected = item
       },
-      _initSubject () {
+      _initSubject() {
         getSubject().then((data) => {
           this.selected = data[0]
           this.subject = data
         })
       },
-      _chooseThisSubject (subject) {
+      _chooseThisSubject(subject) {
         console.log(subject)
         this.selected = subject
       }
     },
     watch: {
-      organize (newValue, oldValue) {
+      organize(newValue, oldValue) {
         this.orgValidator = false
         if (!newValue) {
           this.orgValidatorText = ''
@@ -134,7 +135,7 @@
         this.orgValidator = true
         this.orgValidatorText = '验证成功'
       },
-      classname (newValue, oldValue) {
+      classname(newValue, oldValue) {
         this.classValidator = false
         if (!newValue) {
           this.classValidatorText = ''

@@ -32,19 +32,20 @@
 <script type="text/ecmascript-6">
   import {getVipInfo} from 'api/base'
   import {mapGetters, mapMutations} from 'vuex'
+
   export default {
-    data () {
+    data() {
       return {}
     },
-    created () {
+    created() {
     },
     methods: {
-      close () {
+      close() {
         if (this.crid) {
           this.$router.replace('/home')
         }
       },
-      chooseThisRole (roleId) {
+      chooseThisRole(roleId) {
         if (this.crid !== roleId) {
           sessionStorage.crid = roleId
           this.setCRID(roleId)
@@ -52,7 +53,7 @@
         }
         this.$router.replace('/home')
       },
-      _getVIPInfo () {
+      _getVIPInfo() {
         getVipInfo(this.crid, this)
       },
       ...mapMutations({

@@ -1,5 +1,5 @@
 <template>
-  <div class="home-add-wrapper" ref="scroll" @click="close"></p>
+  <div class="home-add-wrapper" ref="scroll" @click="close">
     <div class="mast-wrapper">
       <div class="detail-wrapper" @click.stop>
         <div class="angle-wrapper"></div>
@@ -27,12 +27,13 @@
 </template>
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+
   export default {
     methods: {
-      close () {
+      close() {
         this.$router.go(-1)
       },
-      mounted: function () {
+      mounted() {
         if (!this.scroll) {
           this.scroll = new BScroll(this.$refs.scroll, {
             click: true
@@ -41,7 +42,7 @@
           this.scroll.refresh()
         }
       },
-      changeRole () {
+      changeRole() {
         this.$router.replace('role')
       }
     }

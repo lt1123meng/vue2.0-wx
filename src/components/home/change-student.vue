@@ -15,12 +15,13 @@
 </template>
 <script type="text/ecmascript-6">
   import {mapGetters, mapMutations} from 'vuex'
+
   export default {
     methods: {
-      close () {
+      close() {
         this.$router.replace('/home')
       },
-      chooseThis (student) {
+      chooseThis(student) {
         this.setStudent(student.stuId)
         this.close()
       },

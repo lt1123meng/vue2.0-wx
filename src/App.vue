@@ -57,12 +57,13 @@
 <script>
   import {mapMutations, mapGetters} from 'vuex'
   import {getBaseInfo, getRole, getIntegrate, getVipInfo} from 'api/base'
+
   export default {
     name: 'app',
-    created () {
+    created() {
       this.hash = location.hash
     },
-    mounted () {
+    mounted() {
       document.body.style.height = window.innerHeight + 'px'
       this.$refs.container.style.height = window.innerHeight + 'px'
       this.$refs.footerLS.style.top = window.innerHeight - 50 + 'px'
@@ -81,12 +82,12 @@
       this._getIntegrate()
     },
     methods: {
-      _getBaseInfo () {
+      _getBaseInfo() {
         getBaseInfo().then((res) => {
           this.setInfo(res.data)
         })
       },
-      _getRole () {
+      _getRole() {
         getRole().then((res) => {
           this.setRole(res)
           if (res.length === 1) {
@@ -116,12 +117,12 @@
           }
         })
       },
-      _getIntegrate () {
+      _getIntegrate() {
         getIntegrate().then((res) => {
           this.setIntegrate(res)
         })
       },
-      _getVIPInfo () {
+      _getVIPInfo() {
         getVipInfo(this.crid, this)
       },
       ...mapMutations({

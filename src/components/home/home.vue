@@ -13,26 +13,27 @@
   import HomeLs from 'components/home/home-LS'
   import HomeJz from 'components/home/home-JZ'
   import {mapGetters} from 'vuex'
+
   export default {
-    data () {
+    data() {
       return {
         calendarShow: false
       }
     },
-    created: function () {
+    created() {
 //      this._chooseRole()
     },
     computed: {
       ...mapGetters(['role', 'crid'])
     },
     methods: {
-      calenderClick () {
+      calenderClick() {
         this.calendarShow = !this.calendarShow
       },
-      calendarChoose (date) {
+      calendarChoose(date) {
         this.calendarShow = false
       },
-      _chooseRole () {
+      _chooseRole() {
         if (this.role.length === 2) {
           this.$router.push('/home/role')
         }

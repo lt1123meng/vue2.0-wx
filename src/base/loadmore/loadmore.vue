@@ -12,7 +12,7 @@
 </template>
 <script type="text/ecmascript-6">
   export default {
-    data () {
+    data() {
       return {}
     },
     props: {
@@ -25,17 +25,17 @@
         default: false
       }
     },
-    created () {
+    created() {
       this.$parent._initLoadMoreList(false)
     },
     methods: {
-      loadTop () {
+      loadTop() {
         this.$parent._initLoadMoreList(true)
       },
-      loadMore () {
+      loadMore() {
         this.$parent._initLoadMoreList(false)
       },
-      onTopLoaded () {
+      onTopLoaded() {
         this.$refs.loadmore.onTopLoaded()
       }
     }
