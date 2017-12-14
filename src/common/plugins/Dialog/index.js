@@ -3,17 +3,18 @@
  */
 import Vue from 'vue'
 import DialogVue from './Dialog.vue'
+
 var running = false
 var DialogPool = []
 var DialogConstructor = Vue.extend(DialogVue)
-DialogConstructor.prototype.close = function () {
+DialogConstructor.prototype.close = () => {
   this.visible = false
   this.timer = setTimeout(() => {
     removeDom(this.$el)
   }, 300)
 }
 
-var getAnInstance = function () {
+var getAnInstance = () => {
   if (DialogPool.length > 0) {
     var instance = DialogPool[0]
     DialogPool.splice(0, 1)
@@ -23,13 +24,13 @@ var getAnInstance = function () {
     el: document.createElement('div')
   })
 }
-var removeDom = function (dom) {
+var removeDom = (dom) => {
   running = false
   if (dom.parentNode) {
     dom.parentNode.removeChild(dom)
   }
 }
-var initInstance = function (options = {}, type) {
+var initInstance = (options = {}, type) => {
   if (running) return
   running = true
   var instance = getAnInstance()
@@ -64,10 +65,10 @@ var initInstance = function (options = {}, type) {
   return instance
 }
 var Dialog = {
-  confirm: function (options) {
+  confirm: (options) => {
     initInstance(options, 'confirm')
   },
-  alert: function (options) {
+  alert: (options) => {
     initInstance(options, 'alert')
   }
 }

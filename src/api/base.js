@@ -4,14 +4,14 @@
 import {BASE_URI, BASE_USER} from './url'
 import axios from 'axios'
 
-export const getBaseInfo = function () {
+export const getBaseInfo = () => {
   return axios.get(BASE_URI + 'user/get/' + sessionStorage.oid)
     .then((data) => {
       return Promise.resolve(data)
     })
 }
 
-export const getRole = function (crid) {
+export const getRole = (crid) => {
   return axios.get(BASE_URI + 'user/role/' + sessionStorage.oid)
     .then((data) => {
       data = data.data
@@ -31,7 +31,7 @@ export const getRole = function (crid) {
     })
 }
 
-export const getIntegrate = function () {
+export const getIntegrate = () => {
   return axios.get(BASE_URI + 'integral/getIngegralSum/' + sessionStorage.oid)
     .then((data) => {
       data = JSON.parse(data.data)
@@ -39,7 +39,7 @@ export const getIntegrate = function () {
     })
 }
 
-export const getVipInfo = function (crid, that, refresh = false, callback) {
+export const getVipInfo = (crid, that, refresh = false, callback) => {
   if (crid === 'LS' && that.viptea && !refresh) return
   if (crid !== 'LS' && that.vippar && !refresh) return
   axios.get(BASE_USER + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
@@ -101,7 +101,7 @@ export const getVipInfo = function (crid, that, refresh = false, callback) {
     })
 }
 
-export const getSubject = function () {
+export const getSubject = () => {
   return axios.get('http://www.microoak.cn/test/wx//subject/list')
     .then((data) => {
       return Promise.resolve(data.data)

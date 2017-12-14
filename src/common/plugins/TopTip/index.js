@@ -3,9 +3,10 @@
  */
 import Vue from 'vue'
 import TopTipVue from './TopTip.vue'
+
 var running = false
 var topTipPool = []
-var getAnInstance = function () {
+var getAnInstance = () => {
   if (topTipPool.length > 0) {
     var instance = topTipPool[0]
     topTipPool.splice(0, 1)
@@ -15,7 +16,7 @@ var getAnInstance = function () {
     el: document.createElement('div')
   })
 }
-var returnAnInstance = function (instance) {
+var returnAnInstance = (instance) => {
   if (instance) {
     topTipPool.push(instance)
   }
@@ -29,7 +30,7 @@ let removeDom = () => {
 }
 
 var TopTipConstructor = Vue.extend(TopTipVue)
-TopTipConstructor.prototype.close = function () {
+TopTipConstructor.prototype.close = () => {
   this.visible = false
   this.closed = true
   this.$el.addEventListener('transitionend', removeDom)
@@ -48,7 +49,7 @@ const TopTip = (options = {}) => {
   Vue.nextTick(() => {
     instance.visible = true
     instance.$el.removeEventListener('transitionend', removeDom)
-    ~duration && (instance.timer = setTimeout(function () {
+    ~duration && (instance.timer = setTimeout(() => {
       if (instance.closed) return
       instance.close()
     }, duration))

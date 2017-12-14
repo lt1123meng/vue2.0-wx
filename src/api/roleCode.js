@@ -4,7 +4,7 @@
 import axios from 'axios'
 import {BASE_URI} from './url'
 
-export const getClassByCode = function (code) {
+export const getClassByCode = (code) => {
   return axios.get(BASE_URI + 'class/infocode', {
     params: {
       code: code

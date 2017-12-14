@@ -40,7 +40,7 @@
       }
     },
     watch: {
-      role: function (newValue, oldValue) {
+      role(newValue, oldValue) {
         this._chooseRole()
       }
     },

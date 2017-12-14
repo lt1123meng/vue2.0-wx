@@ -125,7 +125,7 @@
           if (this.delta === 0) {
             this._setTranslate(self._getTranslateOfPage(this.lastPage))
           }
-          setTimeout(function () {
+          setTimeout(() => {
             self._setTranslate(self._getTranslateOfPage(page))
             if (noAnimation) return
             self._onTransitionStart()
@@ -236,7 +236,7 @@
         if (page === 0) return 0
         var propName = this.isHorizontal() ? 'clientWidth' : 'clientHeight'
         return -[].reduce.call(this.slideEls,
-          function (total, el, i) {
+          (total, el, i) => {
             return i > page - 2 ? total : total + el[propName]
           },
           0) + this.translateOffset

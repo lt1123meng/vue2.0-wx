@@ -143,7 +143,7 @@
       searchClassByCode() {
         if (!this.code || this.code.length < 6) {
           this.$root.TopTip({
-            message: '请输入正确的班级标识符',
+            message: ' 请输入正确的班级标识符',
             type: 'warning'
           })
           return

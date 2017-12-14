@@ -5,7 +5,7 @@
 import {BASE_URI} from './url'
 import axios from 'axios'
 
-export const getInformList = function (param) {
+export const getInformList = (param) => {
   return axios.get(BASE_URI + 'message/getMessages/' + common(), {
     params: param
   }).then((data) => {
@@ -13,13 +13,14 @@ export const getInformList = function (param) {
   })
 }
 
-export const deleteInform = function (crid, oid, id, param) {
+export const deleteInform = (crid, oid, id, param) => {
   return axios.get(BASE_URI + 'message/delMessage/' + id + common(), {
     params: param
   }).then((data) => {
     return Promise.resolve(data)
   })
 }
-function common () {
+
+function common() {
   return '/' + sessionStorage.crid + '/' + sessionStorage.oid
 }

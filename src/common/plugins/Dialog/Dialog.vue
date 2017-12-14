@@ -14,7 +14,7 @@
 </template>
 <script type='text/ecmascript-6'>
   export default {
-    data () {
+    data() {
       return {
         visible: false,
         title: '系统消息',
@@ -25,9 +25,9 @@
       }
     },
     methods: {
-      confirmEvent () {
+      confirmEvent() {
       },
-      cancelEvent () {
+      cancelEvent() {
       }
     }
   }
