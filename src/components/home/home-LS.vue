@@ -7,7 +7,6 @@
       <div class="info-wrapper">
         <div class="name">
           <span class="text">{{info.name}}</span>
-          <img class="vip" src="">
         </div>
         <div class="class-subject">
           <span class="class">早培三班</span>

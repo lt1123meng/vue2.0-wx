@@ -1,5 +1,5 @@
 <template>
-  <div class="home-add-wrapper" @click="close">
+  <div class="change-role-wrapper" @click="close">
     <div class="mast-wrapper">
       <div class="select-role-wrapper" @click.stop>
         <div class="title">
@@ -71,12 +71,13 @@
 <style lang="less" rel="stylesheet/less">
   @import '../../common/less/variable';
 
-  .home-add-wrapper {
+  .change-role-wrapper {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100%;
     transition: all .3s ease-in-out;
+    z-index: 1000;
     .mast-wrapper {
       position: absolute;
       top: 0px;

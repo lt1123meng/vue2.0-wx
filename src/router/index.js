@@ -4,7 +4,6 @@ import Router from 'vue-router'
 // import Home from 'components/home/home'
 // import RoleChangeRole from 'components/home/change-role'
 Vue.use(Router)
-
 const Home = (resolve) => {
   import('components/home/home').then((module) => {
     resolve(module)
@@ -50,7 +49,7 @@ const VipOpen = (resolve) => {
     resolve(module)
   })
 }
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/role',
@@ -101,3 +100,32 @@ export default new Router({
     }
   ]
 })
+console.log(Vue)
+var RouteList = {
+  '/home': true
+}
+var loadingInstance = ''
+var loadingTimer = ''
+router.beforeEach((to, from, next) => {
+  debugger
+  if (RouteList[to.path]) {
+    if (this.a.app.Loading) {
+      loadingInstance = this.a.app.Loading()
+      console.log(loadingInstance)
+      loadingInstance.show()
+      clearTimeout(loadingTimer)
+    }
+  }
+  next()
+})
+router.afterEach((to, from) => {
+  if (RouteList[to.path]) {
+    if (loadingInstance) {
+      loadingTimer = setTimeout(() => {
+        loadingInstance.hide()
+      }, 300)
+    }
+    RouteList[to.path] = false
+  }
+})
+export default router

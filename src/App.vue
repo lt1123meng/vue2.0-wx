@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all-outer-wrapper">
     <div class="all-container" ref="container">
       <keep-alive>
         <router-view/>
@@ -51,6 +51,7 @@
         </router-link>
       </div>
     </footer>
+    <img src="/src/static/loading.gif" style="z-index: -10000" alt="">
   </div>
 </template>
 
@@ -64,6 +65,7 @@
       this.hash = location.hash
     },
     mounted() {
+      debugger
       document.body.style.height = window.innerHeight + 'px'
       this.$refs.container.style.height = window.innerHeight + 'px'
       this.$refs.footerLS.style.top = window.innerHeight - 50 + 'px'
@@ -147,6 +149,14 @@
   @import "common/less/variable.less";
   @import "common/less/mixin.less";
 
+  .all-outer-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #EEEEEE;
+  }
+
   .all-container {
     position: absolute;
     top: 0;
@@ -155,6 +165,7 @@
     width: 100%;
     overflow: scroll;
     box-sizing: border-box;
+    background-color: #EEEEEE;
   }
 
   .footer {
@@ -166,6 +177,7 @@
     border-top: 1px solid @border-color;
     background-color: #fff;
     box-sizing: border-box;
+    z-index: 40;
     .nav-wrapper {
       flex: 1;
       .icon-wrapper {

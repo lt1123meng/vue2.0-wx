@@ -10,6 +10,7 @@ import store from './store'
 import './common/less/index.less'
 import TopTip from 'common/plugins/TopTip'
 import Dialog from 'common/plugins/Dialog'
+import Loading from 'common/plugins/Loading'
 
 Vue.use(InfiniteScroll)
 Vue.use(Lazyload)
@@ -23,7 +24,8 @@ new Vue({
   template: '<App/>',
   components: {App},
   methods: {
-    TopTip
+    TopTip,
+    Loading
   },
   data() {
     return {
