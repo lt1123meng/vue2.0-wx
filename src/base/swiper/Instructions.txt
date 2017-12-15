@@ -1,0 +1,24 @@
+引入  swiper.vue
+注入组件
+利用标签调用
+
+属性 ：
+  direction: HORIZONTAL VERTICAL,
+  mousewheelControl: BooleanBoolean,
+  // 不允许出现拖动
+  performanceMode: Boolean,
+  // 滑动底部小圆点
+  paginationVisible:Boolean,
+  paginationClickable: Boolean,
+  // 是否循环
+  loop: Boolean,
+  // 动画执行时间
+  speed: Number 500
+事件监听
+  slider-move         监听touch-move事件   返回当前偏移量
+  slide-change-start  滑动开始   返回页面索引
+  slide-change-end    滑动结束   返回页面索引
+方法
+ 1、 sliderTo(index) 参数页面索引
+     使用：  ref="slider"
+            this.$refs.slider.sliderTo(-2)

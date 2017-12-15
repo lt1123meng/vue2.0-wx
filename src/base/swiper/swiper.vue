@@ -65,13 +65,19 @@
     },
     data() {
       return {
+        // 当前页面索引 从1开始
         currentPage: 1,
         lastPage: 1,
+        // X  Y方向位移量
         translateX: 0,
         translateY: 0,
+        // 开始滑动时的初始偏移量
         startTranslate: 0,
+        // touch事件偏差量
         delta: 0,
+        // 是否处于touch模式
         dragging: false,
+        // touchStart 触摸点
         startPos: null,
         transitioning: false,
         slideEls: [],
@@ -80,11 +86,9 @@
       }
     },
     mounted() {
-      debugger
       this._onTouchMove = this._onTouchMove.bind(this)
       this._onTouchEnd = this._onTouchEnd.bind(this)
       this.slideEls = [].map.call(this.$refs.swiperWrap.children, el => el)
-      console.log(this.slideEls)
       if (this.loop) {
         this.$nextTick(() => {
           this._createLoop()
@@ -114,6 +118,7 @@
       setPage(page, noAnimation) {
         var self = this
         this.lastPage = this.currentPage
+        debugger
         if (page === 0) {
           this.currentPage = this.slideEls.length
         } else if (page === this.slideEls.length + 1) {
@@ -136,6 +141,7 @@
           this._onTransitionStart()
         }
       },
+      // 判断是不是水平滑动返回Boolean类型
       isHorizontal() {
         return this.direction === HORIZONTAL
       },
@@ -156,12 +162,12 @@
       },
       _onTouchMove(e) {
         this.delta = this._getTouchPos(e) - this.startPos
-        debugger
         if (this.performanceMode) {
           this._setTranslate(this.startTranslate + this.delta)
           this.$emit('slider-move', this._getTranslate())
         }
         if ((this.isVertical() || this.isHorizontal()) && Math.abs(this.delta) > 0) {
+          // 如果滑动事件执行 屏蔽其他点击事件
           e.preventDefault()
         }
       },
@@ -169,7 +175,6 @@
         this.dragging = false
         this.transitionDuration = this.speed
         var isQuickAction = new Date().getTime() - this.startTime < 1000
-        debugger
         if ((this.delta < -100) || (isQuickAction && this.delta < -15)) {
           this.next()
         } else if ((this.delta > 100) || (isQuickAction && this.delta > 15)) {
@@ -198,6 +203,7 @@
       _revert() {
         this.setPage(this.currentPage)
       },
+      // 返回当前touch事件的位置
       _getTouchPos(e) {
         var key = this.isHorizontal() ? 'pageX' : 'pageY'
         return e.changedTouches ? e.changedTouches[0][key] : e[key]
@@ -215,6 +221,7 @@
         this.transitioning = false
         this.transitionDuration = 0
         this.delta = 0
+        this._setTranslate(this._getTranslateOfPage(this.currentPage))
         if (this._isPageChanged()) {
           this.$emit('slide-change-end', this.currentPage)
         } else {
@@ -235,6 +242,7 @@
       _getTranslateOfPage(page) {
         if (page === 0) return 0
         var propName = this.isHorizontal() ? 'clientWidth' : 'clientHeight'
+        // 累加器（callback，param（第一次callback的参数））
         return -[].reduce.call(this.slideEls,
           (total, el, i) => {
             return i > page - 2 ? total : total + el[propName]
@@ -249,6 +257,16 @@
         swiperWrapEl.insertBefore(duplicateLastChild, swiperWrapEl.firstElementChild)
         swiperWrapEl.appendChild(duplicateFirstChild)
         this.translateOffset = -duplicateLastChild[propName]
+      },
+      sliderTo(index) {
+        debugger
+        if (index < 1) {
+          index = 1
+        } else if (index > this.slideEls.length) {
+          index = this.slideEls.length
+        }
+        this.delta = 200
+        this.setPage(index)
       }
     }
   }
