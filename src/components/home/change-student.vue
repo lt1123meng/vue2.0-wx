@@ -44,6 +44,7 @@
     bottom: 0;
     width: 100%;
     transition: all .3s ease-in-out;
+    z-index: 99;
     .mast-wrapper {
       position: absolute;
       top: 0px;
@@ -53,8 +54,10 @@
       transition: all .3s ease-in-out;
       z-index: 1;
       .student-wrapper {
-        margin: 10% auto;
+        margin: 30% auto;
         width: 60%;
+        max-height: 240px;
+        overflow: scroll;
         padding: 12px 0 12px 12px;
         background-color: #fff;
         border-radius: 4px;

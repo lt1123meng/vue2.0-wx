@@ -38,7 +38,7 @@
       },
       title: {
         type: String,
-        default: ''
+        default: '请选择'
       },
       selected: {
         type: Object,
@@ -55,11 +55,12 @@
       select() {
         if (this.selected.name === '') {
           if (this.data[0]) {
+            this.selectThis(this.data[0], false)
             return this.data[0]
           } else {
             return {
-              name: '',
-              value: ''
+              name: '0',
+              value: '暂无数据'
             }
           }
         } else {
@@ -68,12 +69,21 @@
       }
     },
     methods: {
-      selectThis(item) {
-        this.$emit('onchange', item)
-        this._show()
+      selectThis(item, tag) {
+        if (this.select.name !== item.name) {
+          this.$emit('onchange', item)
+        }
+        this._show(tag)
       },
-      _show() {
-        this.show = !this.show
+      _show(tag) {
+        if (tag === false) {
+          this.show = false
+        }
+        if (this.data.length === 0) {
+          this.show = false
+        } else {
+          this.show = !this.show
+        }
       }
     }
   }

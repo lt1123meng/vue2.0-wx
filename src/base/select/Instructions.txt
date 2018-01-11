@@ -1,0 +1,53 @@
+
+iSelect
+
+引入  swiper.vue
+    import ISelect from 'swiper.vue'
+注入组件
+    components:{
+      ISelect
+    }
+利用标签调用
+    <i-select></i-select>
+
+示例：
+<i-select
+  :data="subject"
+  title="选择科目"
+  :selected="selected"
+  @onchange="onchange">
+</i-select>
+
+data格式  Array
+ [
+   {
+      name:'',     //相当于id
+      value:''     //相当于值进行显示
+   }
+ ]
+
+title  String  默认'请选择'
+
+selected  Object
+  {
+    name:'',     //相当于id
+    value:''     //相当于值进行显示
+  }
+
+onchange
+  选择事件监听
+
+
+
+
+WXSelect
+
+对iSelect进行了进一步封装
+用法与iSelect一样
+<wx-select
+  :data="classList"
+  title="选择"
+  @onchange="classChange">
+</wx-select>
+
+

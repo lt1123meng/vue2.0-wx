@@ -1,18 +1,18 @@
 /**
  * Created by LX on 2017/8/29.
  */
-import {BASE_URI, BASE_USER} from './url'
+import {BASE_WX, BASE_VIP} from './url'
 import axios from 'axios'
 
 export const getBaseInfo = () => {
-  return axios.get(BASE_URI + 'user/get/' + sessionStorage.oid)
+  return axios.get(BASE_WX + 'user/get/' + sessionStorage.oid)
     .then((data) => {
       return Promise.resolve(data)
     })
 }
 
 export const getRole = (crid) => {
-  return axios.get(BASE_URI + 'user/role/' + sessionStorage.oid)
+  return axios.get(BASE_WX + 'user/role/' + sessionStorage.oid)
     .then((data) => {
       data = data.data
       var role = []
@@ -32,7 +32,7 @@ export const getRole = (crid) => {
 }
 
 export const getIntegrate = () => {
-  return axios.get(BASE_URI + 'integral/getIngegralSum/' + sessionStorage.oid)
+  return axios.get(BASE_WX + 'integral/getIngegralSum/' + sessionStorage.oid)
     .then((data) => {
       data = JSON.parse(data.data)
       return Promise.resolve(data)
@@ -42,7 +42,7 @@ export const getIntegrate = () => {
 export const getVipInfo = (crid, that, refresh = false, callback) => {
   if (crid === 'LS' && that.viptea && !refresh) return
   if (crid !== 'LS' && that.vippar && !refresh) return
-  axios.get(BASE_USER + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
+  axios.get(BASE_VIP + 'users/' + sessionStorage.oid + '/' + sessionStorage.crid)
     .then((data) => {
       data = data.data
       if (data.success) {

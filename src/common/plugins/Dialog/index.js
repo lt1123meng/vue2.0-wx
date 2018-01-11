@@ -7,10 +7,10 @@ import DialogVue from './Dialog.vue'
 var running = false
 var DialogPool = []
 var DialogConstructor = Vue.extend(DialogVue)
-DialogConstructor.prototype.close = () => {
-  this.visible = false
-  this.timer = setTimeout(() => {
-    removeDom(this.$el)
+DialogConstructor.prototype.close = (instance) => {
+  instance.visible = false
+  instance.timer = setTimeout(() => {
+    removeDom(instance.$el)
   }, 300)
 }
 
@@ -43,11 +43,11 @@ var initInstance = (options = {}, type) => {
   instance.confirmText = options.confirmText || '确定'
   instance.cancelText = options.cancelText || '取消'
   instance.confirmEvent = () => {
-    instance.close()
+    instance.close(instance)
     if (options.ok) options.ok()
   }
   instance.cancelEvent = () => {
-    instance.close()
+    instance.close(instance)
     if (options.cancel) options.cancel()
   }
   instance.cancelShow = type === 'confirm' ? 'true' : 'false'
@@ -58,7 +58,7 @@ var initInstance = (options = {}, type) => {
     Vue.nextTick(() => {
       if (instance.$el.children[0]) {
         let inner = instance.$el.children[0]
-        inner.style.marginTop = '-' + inner.offsetHeight / 2 + 'px'
+        inner.style.marginTop = '-' + (inner.offsetHeight / 2 + 25) + 'px'
       }
     })
   })

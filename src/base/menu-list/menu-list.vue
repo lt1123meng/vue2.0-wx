@@ -5,7 +5,7 @@
         {{section.name}}
       </div>
       <div class="section-wrapper">
-        <div class="menu" v-for="menu in section.list">
+        <div class="menu" v-for="menu in section.list" @click="goMenu(menu)">
           <div class="icon-wrapper">
             <img class="icon" v-lazy="'/src/static/menu/'+menu.icon">
             <span v-if="menu.new" class="tag">NEW</span>
@@ -24,6 +24,11 @@
       menu: {
         type: Array,
         default: []
+      }
+    },
+    methods: {
+      goMenu(menu) {
+        this.$router.push(menu.route)
       }
     }
   }

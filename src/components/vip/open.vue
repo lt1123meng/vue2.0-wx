@@ -1,28 +1,30 @@
 <template>
   <div>
-    <swiper-My ref="slider" :performanceMode="performanceMode" :loop="loop">
-      <div class="inner">1</div>
-      <div class="inner">2</div>
-      <div class="inner">3</div>
-      <div class="inner">4</div>
-    </swiper-My>
+    <div class="swiper-wrapper">
+      <swiper-My class="swiper-box">
+        <div class="inner">
+        </div>
+        <div class="inner">
+        </div>
+      </swiper-My>
+    </div>
     <button @click="slider">111</button>
   </div>
 </template>
 <script type='text/ecmascript-6'>
   import SwiperMy from 'base/swiper/swiper'
-
   export default {
     data() {
       return {
-        performanceMode: false,
-        loop: true
+        performanceMode: true,
+        loop: true,
+        paginationVisible: true
       }
     },
     methods: {
-      slider() {
-        this.$refs.slider.sliderTo(-2)
-      }
+      // slider() {
+      //   this.$refs.slider.sliderTo(-2)
+      // }
     },
     components: {
       SwiperMy
@@ -30,8 +32,32 @@
   }
 </script>
 <style lang='less' rel='stylesheet/less'>
-  .inner {
-    height: 300px !important;
-    background-color: red;
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 64%;
+    .swiper-box {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      .inner {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      .inner:nth-child(1) {
+        background-image: url('/src/static/vip/2.jpg');
+      }
+      .inner:nth-child(2) {
+        background-image: url('/src/static/vip/1.jpg');
+      }
+      .inner:nth-child(3) {
+        background-image: url('/src/static/vip/2.jpg');
+      }
+      .inner:nth-child(4) {
+        background-image: url('/src/static/vip/1.jpg');
+      }
+    }
   }
 </style>

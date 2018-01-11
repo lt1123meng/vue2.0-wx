@@ -13,3 +13,22 @@ body, html {
 .mint-msgbox-confirm {
   color: @blue-color;
 }
+
+.wx-icon-warning {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+  background-color: rgb(247, 181, 43);
+  color: #fff;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  line-height: 16px;
+  overflow: hidden;
+  &:before{
+    content: '!';
+    font-size: 12px;
+    transform: scaleX(2);
+    display: inline-block;
+  }
+}

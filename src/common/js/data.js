@@ -61,7 +61,7 @@ export const MenusLS = [
       }, {
         'vip': '0',
         'icon': 'home-class.png',
-        'route': 'c_class',
+        'route': '/class',
         'text': '我的班级',
         'circle': true
       }, {
@@ -77,7 +77,7 @@ export const MenusLS = [
       }, {
         'vip': '0',
         'icon': 'upload-grade.png',
-        'route': 'g_upload',
+        'route': '/g_l',
         'text': '上传成绩'
       }, {
         'vip': '0',

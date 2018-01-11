@@ -58,14 +58,12 @@
 <script>
   import {mapMutations, mapGetters} from 'vuex'
   import {getBaseInfo, getRole, getIntegrate, getVipInfo} from 'api/base'
-
   export default {
     name: 'app',
     created() {
       this.hash = location.hash
     },
     mounted() {
-      debugger
       document.body.style.height = window.innerHeight + 'px'
       this.$refs.container.style.height = window.innerHeight + 'px'
       this.$refs.footerLS.style.top = window.innerHeight - 50 + 'px'

@@ -2,11 +2,11 @@
  * Created by LX on 2017/9/4.
  */
 
-import {BASE_URI} from './url'
+import {BASE_WX} from './url'
 import axios from 'axios'
 
 export const getInformList = (param) => {
-  return axios.get(BASE_URI + 'message/getMessages/' + common(), {
+  return axios.get(BASE_WX + 'message/getMessages/' + common(), {
     params: param
   }).then((data) => {
     return Promise.resolve(data)
@@ -14,7 +14,7 @@ export const getInformList = (param) => {
 }
 
 export const deleteInform = (crid, oid, id, param) => {
-  return axios.get(BASE_URI + 'message/delMessage/' + id + common(), {
+  return axios.get(BASE_WX + 'message/delMessage/' + id + common(), {
     params: param
   }).then((data) => {
     return Promise.resolve(data)

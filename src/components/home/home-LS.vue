@@ -22,9 +22,12 @@
         </button>
       </div>
     </div>
-    <div class="wait-examine">
-      有3位学生的绑定等待老师审核，点击查看详情
-    </div>
+    <router-link to="/check" tag="div" class="wait-examine" v-if="auditedCount!=0">
+      <span class="wx-icon-warning"></span>
+      有
+      <span class="num">{{auditedCount}}</span>
+      位学生的绑定等待老师审核，点击查看详情
+    </router-link>
     <div class="integrate-wrapper">
       <div class="integrate wrapper">
         <p class="text">{{integrate.point}}</p>
@@ -75,9 +78,10 @@
 <script type="text/ecmascript-6">
   import MenuList from 'base/menu-list/menu-list'
   import InformList from 'components/inform/list'
+  import {getAuditedCount} from 'api/bind'
   import {MenusLS} from 'common/js/data'
   import {mapGetters} from 'vuex'
-  //  import Toast from '../../common/plugins/TopTip'
+
   export default {
     data() {
       return {
@@ -85,10 +89,15 @@
         scroll: '',
         calendarShow: false,
         menu: MenusLS,
-        navSelected: '1'
+        navSelected: '1',
+        auditedCount: 0
       }
     },
     created() {
+      getAuditedCount().then((res) => {
+        res = res.data
+        this.auditedCount = res
+      })
     },
     mounted() {
       this.$nextTick(() => {
@@ -186,6 +195,10 @@
       text-align: center;
       background-color: #fff;
       color: @light-grey;
+      font-size: 13px;
+      .num {
+        color: @red-color;
+      }
     }
     .integrate-wrapper {
       display: flex;

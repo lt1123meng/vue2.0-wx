@@ -46,7 +46,7 @@
       position: absolute;
       top: 50%;
       left: 10%;
-      margin-top: -62.5%;
+      margin-top: -62.5px;
       padding: 18px 22px;
       box-sizing: border-box;
       width: 80%;

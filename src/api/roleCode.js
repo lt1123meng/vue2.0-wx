@@ -2,10 +2,10 @@
  * Created by LX on 2017/12/1.
  */
 import axios from 'axios'
-import {BASE_URI} from './url'
+import {BASE_WX} from './url'
 
 export const getClassByCode = (code) => {
-  return axios.get(BASE_URI + 'class/infocode', {
+  return axios.get(BASE_WX + 'class/infocode', {
     params: {
       code: code
     }
