@@ -5,16 +5,18 @@ import Vue from 'vue'
 import LoadingVue from './Loading.vue'
 
 var LoadingConstructor = Vue.extend(LoadingVue)
-var topTipPool = []
+var LoadingPool = []
 var getAnInstance = () => {
-  if (topTipPool.length > 0) {
-    var instance = topTipPool[0]
-    topTipPool.splice(0, 1)
-    return instance
+  if (LoadingPool.length > 0) {
+    var instant = LoadingPool[0]
+    LoadingPool.splice(0, 1)
+    return instant
   }
-  return new LoadingConstructor({
+  let instance = new LoadingConstructor({
     el: document.createElement('div')
   })
+  document.body.appendChild(instance.$el)
+  return instance
 }
 
 LoadingConstructor.prototype.hide = () => {
@@ -25,7 +27,6 @@ LoadingConstructor.prototype.show = () => {
 }
 const Loading = (options = {}) => {
   var instance = getAnInstance()
-  document.body.appendChild(instance.$el)
   return instance
 }
 export default Loading

@@ -16,6 +16,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "better-scroll": "^1.2.2",
+    "echarts": "^3.8.5",
+    "echarts-gl": "^1.0.0-beta.6",
     "fastclick": "^1.0.6",
     "jsonp": "^0.2.1",
     "less": "^2.7.3",

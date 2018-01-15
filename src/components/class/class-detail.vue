@@ -17,8 +17,7 @@
       </div>
     </div>
     <div class="class-student-wrapper empty" v-if="studentList.length===0">
-      <img src="/src/static/loading.gif">
-      <p class="text">该班级暂无学生绑定</p>
+      <empty title="该班级暂无学生绑定"></empty>
       <p class="share">分享二维码，邀请学生/家长加入</p>
     </div>
     <div class="class-student-wrapper" ref="stu" v-else>
@@ -47,6 +46,7 @@
 </template>
 <script type="text/ecmascript-6">
   import Audited from 'base/wait-bind/wait-bind'
+  import Empty from 'base/empty/empty'
   import {getAuditedList} from 'api/bind'
   import {getClassStu} from 'api/class'
 
@@ -117,7 +117,8 @@
       }
     },
     components: {
-      Audited
+      Audited,
+      Empty
     }
   }
 </script>

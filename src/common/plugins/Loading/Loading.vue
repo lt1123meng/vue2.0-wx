@@ -31,8 +31,8 @@
     top: 0;
     bottom: 0;
     width: 100%;
-    background-color: #fff;
-    z-index: 9;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 40;
   }
 
   .loading-wrapper img {

@@ -161,7 +161,7 @@ const router = new Router({
       component: Check
     },
     {
-      path: '/g_l',
+      path: '/g_l/:sid/:cid',
       component: GradeLS
     },
     {

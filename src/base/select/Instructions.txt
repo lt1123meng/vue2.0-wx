@@ -47,6 +47,7 @@ WXSelect
 <wx-select
   :data="classList"
   title="选择"
+  :selected="classSelect"
   @onchange="classChange">
 </wx-select>
 

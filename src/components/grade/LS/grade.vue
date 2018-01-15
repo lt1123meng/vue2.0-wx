@@ -51,7 +51,8 @@
 </template>
 
 <script>
-  import {getLSClassList, getExamListByClass} from 'api/class'
+  import {getLSClassList} from 'api/class'
+  import {getExamListByClass, getFailReason} from 'api/grade'
   import YdSelect from 'base/select/YDSelect'
 
   export default {
@@ -69,8 +70,8 @@
     },
     methods: {
       classChange(item) {
-        console.log(item)
         this.classSelect = item
+        this.$router.replace(`/g_l/s/${this.classSelect.name}`)
         this._getExamList(this.classSelect.name)
       },
       goGradeDetail(exam) {
@@ -98,11 +99,15 @@
               ...routerParams
             })
           }
-        } else if (status === '2') {
-          // $gradesService.refuseReason(class_id, exam_id)
-          //   .success(function (data) {
-          //     $.alert(JSON.parse(data).remark, '失败原因')
-          //   })
+        } else if (exam.status === '2') {
+          getFailReason(exam.jx_class_id, exam.jx_exam_id).then((res) => {
+            this.$root.Dialog.alert({
+              title: '拒绝处理原因',
+              content: JSON.parse(res.data).remark,
+              cancel() {
+              }
+            })
+          })
         }
       },
       _getClassList() {
@@ -111,14 +116,18 @@
             res = res.data
             if (res.length > 0) {
               let arr = []
+              let index = 0
               for (let i = 0; i < res.length; i++) {
                 let obj = {}
+                if (this.$route.params.cid === res[i].id) {
+                  index = i
+                }
                 obj.name = res[i].id
                 obj.value = `${res[i].orgname}  ${res[i].name}`
                 arr.push(obj)
               }
               this.classList = arr
-              this.classSelect = arr[0]
+              this.classSelect = arr[index]
               this._getExamList(this.classSelect.name)
             }
           })
@@ -128,6 +137,7 @@
         getExamListByClass(id)
           .then((res) => {
             res = JSON.parse(res.data)
+            console.log(res)
             let exam = {}
             let time = ''
             for (let i = 0; i < res.length; i++) {
@@ -144,6 +154,9 @@
             this.loading = false
           })
       }
+    },
+    deactivated() {
+      this.$destroy()
     },
     components: {
       YdSelect

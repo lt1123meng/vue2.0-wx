@@ -62,6 +62,7 @@
         margin: 16px 0;
         color: #555;
         word-break: break-all;
+        line-height: 1.4;
       }
       .Lui-tail {
         margin-top: 22px;

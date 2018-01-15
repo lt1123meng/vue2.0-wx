@@ -1,0 +1,25 @@
+引入  echart.vue
+注入组件
+利用标签调用
+
+<echarts :data="secondChart" height="1.1"></echarts>
+
+data:echart所需要的参数
+
+    组件内已定义基本参数，因此data中只需定义特殊数据
+    data中的内容会覆盖组件内的内容
+   例：：：：
+data={
+  //名字
+  title: {
+    text: '分数段分布图'
+  },
+  //数据项
+  series: [],
+  //图例
+  legend: {},
+  //y轴
+  yAxis: [],
+  //x轴
+  xAxis: []
+}

@@ -77,7 +77,7 @@ export const MenusLS = [
       }, {
         'vip': '0',
         'icon': 'upload-grade.png',
-        'route': '/g_l',
+        'route': '/g_l/s/6f23ecd1fe3245b8a9ea4088553caac5',
         'text': '上传成绩'
       }, {
         'vip': '0',

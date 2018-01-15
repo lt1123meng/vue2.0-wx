@@ -6,8 +6,8 @@
                infinite-scroll-distance="10"
                ref="loadmore">
     <slot></slot>
-    <div v-show="!finish&&top" class="loading-wrapper">加载中……</div>
-    <div v-show="finish&&top" class="loading-wrapper">数据加载完毕</div>
+    <div v-show="!finish&&top" class="loading-text">加载中……</div>
+    <div v-show="finish&&top" class="loading-text">数据加载完毕</div>
   </mt-loadmore>
 </template>
 <script type="text/ecmascript-6">
@@ -53,7 +53,7 @@
     overflow: scroll;
     padding: 8px;
     box-sizing: border-box;
-    .loading-wrapper {
+    .loading-text {
       margin-top: 6px;
       height: 32px;
       line-height: 32px;

@@ -3,28 +3,11 @@
     <div @click="_show" :name="select.name" :value="select.value">
       {{select.value}}
     </div>
-    <transition name="select">
-      <div class="select-list-mast" @click="_show" v-show="show">
-        <div class="select-list-wrapper" @click.stop>
-          <div class="select-title">
-            <div class="select-true"></div>
-            <div class="select-name" v-html="title"></div>
-            <div class="select-cancel" @click="_show">取消</div>
-          </div>
-          <div class="select-list">
-            <div class="select-item"
-                 v-for="item in data"
-                 @click="selectThis(item)">
-              <div class="name" v-html="item.value"></div>
-              <div class="check"><span v-show="item.name===select.name">✔</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import SELECT from './select'
+
   export default {
     data() {
       return {
@@ -69,21 +52,10 @@
       }
     },
     methods: {
-      selectThis(item, tag) {
-        if (this.select.name !== item.name) {
+      _show() {
+        SELECT(this.data, this.selected, this.title, (item) => {
           this.$emit('onchange', item)
-        }
-        this._show(tag)
-      },
-      _show(tag) {
-        if (tag === false) {
-          this.show = false
-        }
-        if (this.data.length === 0) {
-          this.show = false
-        } else {
-          this.show = !this.show
-        }
+        })
       }
     }
   }

@@ -24,9 +24,13 @@ Vue.component(LEmpty.name, LEmpty)
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 Vue.filter('date', (time, format) => {
-  let date = new Date(time)
-  let formated = formatDate(date, format)
-  return formated
+  if (time) {
+    let date = new Date(time)
+    let formated = formatDate(date, format)
+    return formated
+  } else {
+    return ''
+  }
 })
 new Vue({
   el: '#app',

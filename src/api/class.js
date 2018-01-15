@@ -3,7 +3,7 @@
  */
 import {BASE_WX} from './url'
 
-import {GET, POST} from './axios'
+import {GET} from './axios'
 
 export const createClass = (params) => {
   let oid = sessionStorage.oid
@@ -35,9 +35,4 @@ export const getClassQRCode = (id) => {
 export const getLSClassList = () => {
   let oid = sessionStorage.oid
   return GET(`${BASE_WX}class/list/LS/${oid}`)
-}
-export const getExamListByClass = (id) => {
-  let crid = sessionStorage.crid
-  let oid = sessionStorage.oid
-  return POST(`${BASE_WX}score/examList/${id}/${crid}/${oid}`)
 }

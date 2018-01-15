@@ -1,12 +1,17 @@
 <template>
   <div class="empty-outer-wrapper">
-    <img class="empty-img" src="/src/static/loading.gif">
-    <p class="empty-text">暂无数据</p>
+    <img class="empty-img" src="/src/static/empty.png">
+    <p class="empty-text">{{title}}</p>
   </div>
 </template>
 <script>
   export default {
-    name: 'empty'
+    name: 'empty',
+    props: {
+      title: {
+        default: '暂无数据'
+      }
+    }
   }
 </script>
 
@@ -15,11 +20,11 @@
     padding: 10% 0;
     text-align: center;
     .empty-img {
-      width: 100px;
+      width: 150px;
+      margin: 0 0 22px 0;
     }
     .empty-text {
       color: #6d6d6d;
     }
   }
-
 </style>
