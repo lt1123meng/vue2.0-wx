@@ -14,13 +14,10 @@
             <span class="class">早培三班</span>
             <span class="subject">语文老师</span>
           </div>
-          <div class="class-detail">
-            详细班级
-          </div>
         </div>
         <div class="qrcode-wrapper">
           <img src="/src/static/qrcode.png" class="qrcode">
-          <img src="/src/static/icon/icon-back.png" class="next">
+          <span class="next">＞</span>
         </div>
       </div>
       <div class="main-operation-wrapper">
@@ -129,19 +126,24 @@
     .header-wrapper {
       display: flex;
       padding: 14px 8px;
-      background-color: #fff;
+      background-color: @blue-color;
       .border-1px();
       .photo-wrapper {
         flex: 0 0 60px;
         .photo {
           width: 54px;
           height: 54px;
-          border-radius: 50%;
+          border-radius: 2px;
+          border: 3px solid rgb(166, 223, 252);
+          box-sizing: border-box;
+          color: #fff;
         }
       }
       .info-wrapper {
         flex: 1;
+        padding: 8px 0;
         line-height: 17px;
+        color: #fff;
         .name {
           position: relative;
           top: -2px;
@@ -158,33 +160,29 @@
         }
         .class-subject {
           margin-top: 3px;
-          font-size: 15px;
-          color: @light-grey;
+          color: #d3e5ff;;
           font-weight: bold;
-        }
-        .class-detail {
-          position: relative;
-          top: 2px;
-          color: @blue-color;
         }
       }
       .qrcode-wrapper {
         line-height: 56px;
+        font-size: 0;
         .qrcode {
           width: 32px;
           height: 32px;
           vertical-align: middle;
         }
         .next {
-          width: 14px;
-          transform: rotate(180deg);
+          display: inline-block;
           vertical-align: middle;
+          color: #fff;
+          font-size: 22px;
+          font-weight: bold;
         }
       }
     }
     .main-operation-wrapper {
       display: flex;
-      margin-top: 8px;
       padding: 12px;
       box-sizing: border-box;
       background-color: #fff;

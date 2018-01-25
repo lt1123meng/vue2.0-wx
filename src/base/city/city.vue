@@ -13,7 +13,7 @@
         <div class='list' @click='chooseThisProvince(index)'
              v-for='(item, index) in cityList'>
           <div class='check'>
-            <span v-if='index===provinceIndex'>√</span>
+            <span v-if='index===provinceIndex'>✔</span>
           </div>
           <div class='text'>{{item.name}}</div>
           <div class='next'><img src='/src/static/icon/icon-back.png'></div>
@@ -33,7 +33,7 @@
              @click='chooseThisCity(index)'
         >
           <div class='check'>
-            <span v-if='index==cityIndex'>√</span>
+            <span v-if='index==cityIndex'>✔</span>
           </div>
           <div class='text'>{{item}}</div>
         </div>

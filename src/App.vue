@@ -37,10 +37,9 @@
         </router-link>
       </div>
       <div class="nav-wrapper">
-        <router-link tag="div" active-class="active" class="icon-wrapper" to="/message">
-          <img class="able img" :src="'/src/static/footer/nav-user@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
-          <p>消息</p>
+        <router-link tag="div" active-class="active" class="icon-wrapper" to="/ph">
+          <img class="photo img " src="/src/static/footer/footer-photo.jpg">
+          <p>拍搜</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
@@ -58,6 +57,7 @@
 <script>
   import {mapMutations, mapGetters} from 'vuex'
   import {getBaseInfo, getRole, getIntegrate, getVipInfo} from 'api/base'
+
   export default {
     name: 'app',
     created() {
@@ -191,6 +191,14 @@
         }
         .disable {
           display: block;
+        }
+        .photo {
+          position: relative;
+          margin-top: -19px;
+          width: 60px;
+          height: auto;
+          border-radius: 50%;
+          box-shadow: 0px -4px 12px #e39eb7;
         }
         &.active {
           color: @blue-color;

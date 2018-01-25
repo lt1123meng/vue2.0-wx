@@ -7,11 +7,12 @@ router.get('/', function (req, res, next) {
   req.url = '/index.html'
   next();
 })
-app.listen('8888', function (err) {
+var port=parseInt(8 + '' + parseInt(Math.random() * 10) + parseInt(Math.random() * 10) + parseInt(Math.random() * 10))
+app.listen(port, function (err) {
   if (err) {
     console.log(err)
     return
   }
   // when env is testing, don't need open it
-  console.log(8888)
+  console.log(port)
 })

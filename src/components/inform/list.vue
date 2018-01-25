@@ -1,7 +1,7 @@
 <template>
   <load-more :top="top" :finish="finish" ref="loadmore">
     <div class="inform-item-wrapper">
-      <div class="item-wrapper" v-for="item in list">
+      <div class="item-wrapper" @click="goInformDetail(item)" v-for="item in list">
         <div class="class-name">
           <div class="text">{{item.className}}</div>
         </div>
@@ -51,6 +51,9 @@
       this.requesting = false
     },
     methods: {
+      goInformDetail(inform) {
+        this.$router.push(`/i_f/${inform.id}/${inform.class_Id}`)
+      },
       _initLoadMoreList(tag) {
         if (tag) {
           this.top = false

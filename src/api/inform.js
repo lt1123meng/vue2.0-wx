@@ -14,8 +14,18 @@ export const getInformList = (param) => {
 }
 
 export const deleteInform = (crid, oid, id, param) => {
-  return axios.get(BASE_WX + 'message/delMessage/' + id + common(), {
+  return axios.get(`${BASE_WX}message/delMessage/${id}${common()}`, {
     params: param
+  }).then((data) => {
+    return Promise.resolve(data)
+  })
+}
+
+export const InformDetail = (id, cid) => {
+  return axios.get(`${BASE_WX}message/getMessageDetail/${id}${common()}`, {
+    params: {
+      classId: cid
+    }
   }).then((data) => {
     return Promise.resolve(data)
   })
