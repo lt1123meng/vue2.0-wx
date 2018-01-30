@@ -6,7 +6,7 @@
           <div class="student">{{item.stuName}}</div>
           <div class="class">{{item.className}}</div>
           <div class="check">
-            <img class="icon" src="/src/static/icon/icon-ok.png" v-if="item.stuId===student">
+            <img class="icon" src="/static/image/icon/icon-ok.png" v-if="item.stuId===student">
           </div>
         </div>
       </div>

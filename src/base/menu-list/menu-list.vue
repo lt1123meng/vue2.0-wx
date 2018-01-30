@@ -7,7 +7,7 @@
       <div class="section-wrapper">
         <div class="menu" v-for="menu in section.list" @click="goMenu(menu)">
           <div class="icon-wrapper">
-            <img class="icon" v-lazy="'/src/static/menu/'+menu.icon">
+            <img class="icon" v-lazy="'/static/image/menu/'+menu.icon">
             <span v-if="menu.new" class="tag">NEW</span>
             <span v-if="menu.hot" class="tag">HOT</span>
             <span v-if="menu.circle" class="tag"></span>

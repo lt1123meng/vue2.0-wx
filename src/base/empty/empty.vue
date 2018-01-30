@@ -1,6 +1,6 @@
 <template>
   <div class="empty-outer-wrapper">
-    <img class="empty-img" src="/src/static/empty.png">
+    <img class="empty-img" src="/static/image/empty.png">
     <p class="empty-text">{{title}}</p>
   </div>
 </template>

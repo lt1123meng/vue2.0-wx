@@ -12,7 +12,7 @@
   </div>
 </template>
 <script type='text/ecmascript-6'>
-  import SwiperMy from 'base/swiper/swiper'
+  import SwiperMy from 'wx/ui/swiper/swiper'
   export default {
     data() {
       return {
@@ -47,16 +47,16 @@
         background-position: center center;
       }
       .inner:nth-child(1) {
-        background-image: url('/src/static/vip/2.jpg');
+        background-image: url('/static/image/vip/2.jpg');
       }
       .inner:nth-child(2) {
-        background-image: url('/src/static/vip/1.jpg');
+        background-image: url('/static/image/vip/1.jpg');
       }
       .inner:nth-child(3) {
-        background-image: url('/src/static/vip/2.jpg');
+        background-image: url('/static/image/vip/2.jpg');
       }
       .inner:nth-child(4) {
-        background-image: url('/src/static/vip/1.jpg');
+        background-image: url('/static/image/vip/1.jpg');
       }
     }
   }

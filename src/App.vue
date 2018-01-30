@@ -8,22 +8,22 @@
     <footer class="footer" ref="footerLS" v-show="crid==='LS'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
-          <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
+          <img class="able img" :src="'/static/image/footer/nav-home@'+ratio+'x.png'">
+          <img class="disable img" :src="'/static/image/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/class">
-          <img class="able img" :src="'/src/static/footer/nav-user@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-disuser@'+ratio+'x.png'">
+          <img class="able img" :src="'/static/image/footer/nav-user@'+ratio+'x.png'">
+          <img class="disable img" :src="'/static/image/footer/nav-disuser@'+ratio+'x.png'">
           <p>班级</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
-          <img class="able img" :src="'/src/static/footer/nav-setup@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
+          <img class="able img" :src="'/static/image/footer/nav-setup@'+ratio+'x.png'">
+          <img class="disable img" :src="'/static/image/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
         </router-link>
       </div>
@@ -31,26 +31,26 @@
     <footer class="footer" ref="footerXS" v-show="crid==='JZ'||crid==='BR'">
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/home">
-          <img class="able img" :src="'/src/static/footer/nav-home@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-dishome@'+ratio+'x.png'">
+          <img class="able img" :src="'/static/image/footer/nav-home@'+ratio+'x.png'">
+          <img class="disable img" :src="'/static/image/footer/nav-dishome@'+ratio+'x.png'">
           <p>首页</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/ph">
-          <img class="photo img " src="/src/static/footer/footer-photo.jpg">
+          <img class="photo img " src="/static/image/footer/footer-photo.jpg">
           <p>拍搜</p>
         </router-link>
       </div>
       <div class="nav-wrapper">
         <router-link tag="div" active-class="active" class="icon-wrapper" to="/setup">
-          <img class="able img" :src="'/src/static/footer/nav-setup@'+ratio+'x.png'">
-          <img class="disable img" :src="'/src/static/footer/nav-dissetup@'+ratio+'x.png'">
+          <img class="able img" :src="'/static/image/footer/nav-setup@'+ratio+'x.png'">
+          <img class="disable img" :src="'/static/image/footer/nav-dissetup@'+ratio+'x.png'">
           <p>设置</p>
         </router-link>
       </div>
     </footer>
-    <img src="/src/static/loading.gif" style="z-index: -10000" alt="">
+    <img src="/static/image/loading.gif" style="z-index: -10000" alt="">
   </div>
 </template>
 

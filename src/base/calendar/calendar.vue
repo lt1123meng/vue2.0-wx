@@ -10,10 +10,10 @@
           <span class="year"><span v-html="calendarCurrent.year"></span></span>
         </div>
         <div class="change-month">
-          <img class="icon prev" @click="prevMonth" src="/src/static/icon/icon-back.png">
+          <img class="icon prev" @click="prevMonth" src="/static/image/icon/icon-back.png">
           <img class="icon next"
                :class="{'disable':calendarToday.year === calendarCurrent.year && calendarToday.month === calendarCurrent.month}"
-               @click="nextMonth" src="/src/static/icon/icon-back.png">
+               @click="nextMonth" src="/static/image/icon/icon-back.png">
         </div>
       </div>
       <div class="content-wrapper">

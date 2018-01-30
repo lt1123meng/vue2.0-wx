@@ -1,13 +1,13 @@
 <template>
   <transition name='fade'>
-    <div class="Lui-toast-wrapper" v-show="visible">
-      <div class="Lui-content-wrapper">
-        <div class="Lui-icon">
-          <span class="Lui-text" :class="type" v-if="type==='success'">✔</span>
-          <span class="Lui-text" :class="type" v-if="type==='warning'">¡</span>
-          <span class="Lui-text" :class="type" v-if="type==='error'">✘</span>
+    <div class="WXui-toast-wrapper" v-show="visible">
+      <div class="WXui-content-wrapper">
+        <div class="WXui-icon">
+          <span class="WXui-text" :class="type" v-if="type==='success'">✔</span>
+          <span class="WXui-text" :class="type" v-if="type==='warning'">¡</span>
+          <span class="WXui-text" :class="type" v-if="type==='error'">✘</span>
         </div>
-        <div class="Lui-text" v-html="message"></div>
+        <div class="WXui-text" v-html="message"></div>
       </div>
     </div>
   </transition>
@@ -28,7 +28,7 @@
 
 
 <style lang="less" rel="stylesheet/less">
-  .Lui-toast-wrapper {
+  .WXui-toast-wrapper {
     position: fixed;
     width: 100%;
     top: 0;
@@ -36,13 +36,13 @@
     z-index: 1000;
     box-shadow: 0 0 10px 0 rgba(7, 17, 27, 0.1);
     transition: transform .3s ease-in-out;
-    .Lui-content-wrapper {
+    .WXui-content-wrapper {
       display: flex;
       padding: 8px;
       box-sizing: border-box;
-      .Lui-icon {
+      .WXui-icon {
         flex: 0 0 40px;
-        .Lui-text {
+        .WXui-text {
           display: inline-block;
           width: 20px;
           height: 20px;
@@ -66,7 +66,7 @@
           }
         }
       }
-      .Lui-text {
+      .WXui-text {
         line-height: 1.5;
         word-break: break-all;
       }

@@ -16,7 +16,7 @@
           </div>
           <div class="code">
             <div class="qr-code" @click.stop="goClassQrcode(item)">
-              <img class="qr" src="/src/static/qrcode.png">
+              <img class="qr" src="/static/image/qrcode.png">
             </div>
             <div class="text">
               标识：{{item.code}}

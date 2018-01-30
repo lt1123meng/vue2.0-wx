@@ -3,7 +3,7 @@
     <div class='select-box' @click='choose()'>
       <div class='title'><span>当前位置：</span></div>
       <div class='text'><span>{{current}}</span></div>
-      <div class='next'><img src='/src/static/icon/icon-back.png'></div>
+      <div class='next'><img src='/static/image/icon/icon-back.png'></div>
     </div>
     <div class='select-wrapper select-province-wrapper'
          @click='hide()'
@@ -16,7 +16,7 @@
             <span v-if='index===provinceIndex'>✔</span>
           </div>
           <div class='text'>{{item.name}}</div>
-          <div class='next'><img src='/src/static/icon/icon-back.png'></div>
+          <div class='next'><img src='/static/image/icon/icon-back.png'></div>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
          v-show='cityShow'
     >
       <div class='back' @click.stop='backProvince()'>
-        <img class='icon' src='/src/static/icon/icon-back.png' alt=''>
+        <img class='icon' src='/static/image/icon/icon-back.png' alt=''>
       </div>
       <div class='box' @click.stop>
         <div class='list'

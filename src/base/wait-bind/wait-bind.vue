@@ -9,7 +9,7 @@
           {{list.className}}
         </div>
         <div class="next">
-          <img class="icon" src="/src/static/icon/icon-back.png">
+          <img class="icon" src="/static/image/icon/icon-back.png">
         </div>
       </div>
       <div class="audited-list">

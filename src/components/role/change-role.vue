@@ -15,8 +15,8 @@
                @click="chooseThisRole(roleId)"
           >
             <div class="img-wrapper">
-              <img class="img" v-if="roleId=='LS'" v-lazy="'/src/static/photo_ls.png'">
-              <img class="img" v-if="roleId!='LS'" v-lazy="'/src/static/photo_jz.png'">
+              <img class="img" v-if="roleId=='LS'" v-lazy="'/static/image/photo_ls.png'">
+              <img class="img" v-if="roleId!='LS'" v-lazy="'/static/image/photo_jz.png'">
             </div>
             <p class="name">
               <span v-if="roleId=='LS'">老师</span>

@@ -13,7 +13,7 @@
     <div class="class-teacher-wrapper">
       <div class="text">任课教师</div>
       <div class="next">
-        <img src="/src/static/icon/icon-back.png">
+        <img src="/static/image/icon/icon-back.png">
       </div>
     </div>
     <div class="class-student-wrapper empty" v-if="studentList.length===0">

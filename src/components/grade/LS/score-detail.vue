@@ -129,7 +129,7 @@
   import echarts from 'base/echart/echart'
   import YdSelect from 'base/select/YDSelect'
   import GradeHeader from '../header'
-  import SwiperMy from 'base/swiper/swiper'
+  import SwiperMy from 'wx/ui/swiper/swiper'
   import {FormatLegendData, ScortData} from '../grade'
   import {LSfirstTable, LSsecondBarScore, LSthirdSUbject, LSthirdClass, LSthirdBarChart} from 'api/grade'
 
@@ -184,7 +184,7 @@
       fsLengthChoose(id) {
         if (this.fsTable.legend[id].active) {
           this.fsTable.legend[id].active = false
-          this.fsActiveCount--
+          this.fsActiveCount = this.fsActiveCount - 1
         } else {
           if (this.fsActiveCount === 4) {
             this.$root.Dialog.alert({
@@ -232,7 +232,9 @@
               data: res.subjectData
             }
             this.fsTable = FormatLegendData(res.data)
-            this.fsActiveCount = this.fsTable.data.length
+            this.$nextTick(() => {
+              this.fsActiveCount = Math.min(this.fsTable.data[0].content.length, 4)
+            })
           })
       },
       _secondChartInit() {
@@ -368,11 +370,11 @@
         }
       }
       .legend-outer-wrapper {
-        .title-wrapper{
+        .title-wrapper {
           padding: 0 12px;
           box-sizing: border-box;
           line-height: 30px;
-          .tag{
+          .tag {
             color: @red-color;
           }
         }

@@ -16,82 +16,82 @@
           </div>
         </div>
         <div class="qrcode-wrapper">
-          <img src="/src/static/qrcode.png" class="qrcode">
+          <img src="/static/image/qrcode.png" class="qrcode">
           <span class="next">＞</span>
         </div>
       </div>
       <div class="main-operation-wrapper">
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/menu/inform.png">
+            <img class="icon" src="/static/image/menu/inform.png">
           </div>
           <div class="text">我的钱包</div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/menu/inform.png">
+            <img class="icon" src="/static/image/menu/inform.png">
           </div>
           <div class="text">我的订单</div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/menu/inform.png">
+            <img class="icon" src="/static/image/menu/inform.png">
           </div>
           <div class="text">切换角色</div>
         </div>
       </div>
       <div class="poster-wrapper">
-        <img class="img" src="/src/static/poster/index.jpg">
+        <img class="img" src="/static/image/poster/index.jpg">
       </div>
       <div class="list-wrapper">
         <div class="item-wrapper" @click="goBindRole">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+            <img class="icon" src="/static/image/icon/icon-smile1.jpg">
           </div>
           <div class="name">快速绑定</div>
           <div class="addition">绑定角色</div>
           <div class="next">
-            <img src="/src/static/icon/icon-back.png" class="icon">
+            <img src="/static/image/icon/icon-back.png" class="icon">
           </div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+            <img class="icon" src="/static/image/icon/icon-smile1.jpg">
           </div>
           <div class="name">VIP会员</div>
           <div class="addition">开通会员</div>
           <div class="next">
-            <img src="/src/static/icon/icon-back.png" class="icon">
+            <img src="/static/image/icon/icon-back.png" class="icon">
           </div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+            <img class="icon" src="/static/image/icon/icon-smile1.jpg">
           </div>
           <div class="name">VIP会员</div>
           <div class="addition">开通会员</div>
           <div class="next">
-            <img src="/src/static/icon/icon-back.png" class="icon">
+            <img src="/static/image/icon/icon-back.png" class="icon">
           </div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+            <img class="icon" src="/static/image/icon/icon-smile1.jpg">
           </div>
           <div class="name">VIP会员</div>
           <div class="addition">开通会员</div>
           <div class="next">
-            <img src="/src/static/icon/icon-back.png" class="icon">
+            <img src="/static/image/icon/icon-back.png" class="icon">
           </div>
         </div>
         <div class="item-wrapper">
           <div class="icon-wrapper">
-            <img class="icon" src="/src/static/icon/icon-smile1.jpg">
+            <img class="icon" src="/static/image/icon/icon-smile1.jpg">
           </div>
           <div class="name">VIP会员</div>
           <div class="addition">开通会员</div>
           <div class="next">
-            <img src="/src/static/icon/icon-back.png" class="icon">
+            <img src="/static/image/icon/icon-back.png" class="icon">
           </div>
         </div>
       </div>

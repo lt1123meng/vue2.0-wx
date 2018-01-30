@@ -1,6 +1,6 @@
 <template>
   <div class="loading-outer-wrapper">
-    <img class="loading-img" src="/src/static/loading.gif">
+    <img class="loading-img" src="/static/image/loading.gif">
     <p class="loading-text">小钉正在努力加载中……</p>
   </div>
 </template>

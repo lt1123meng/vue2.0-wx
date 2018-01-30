@@ -2,7 +2,7 @@
   <div class="home-jz-wrapper">
     <div class="search-wrapper">
       <div class="schedule-box" @click="calenderClick">
-        <img class="icon" v-lazy="'/src/static/icon/icon-list.png'">
+        <img class="icon" v-lazy="'/static/image/icon/icon-list.png'">
       </div>
       <div class="search-box">
         <div class="inner-box">
@@ -11,11 +11,11 @@
         </div>
       </div>
       <div class="me-box" @click="chooseRole">
-        <img class="icon" v-lazy="'/src/static/icon/icon-user.png'">
+        <img class="icon" v-lazy="'/static/image/icon/icon-user.png'">
       </div>
     </div>
     <div class="poster-wrapper">
-      <img v-lazy="'/src/static/poster/index.jpg'" width="100%">
+      <img v-lazy="'/static/image/poster/index.jpg'" width="100%">
     </div>
     <div class="student-wrapper">
       <div class="box" @click="goChangeStudent">
@@ -38,7 +38,7 @@
           <div class="blank"></div>
           <div class="result-wrapper">
             <div class="icon-wrapper">
-              <img src="/src/static/icon/icon-smile1.jpg" class="icon">
+              <img src="/static/image/icon/icon-smile1.jpg" class="icon">
             </div>
             <div class="text">
               表扬10次/批评31次
@@ -61,7 +61,7 @@
           <div class="blank"></div>
           <div class="result-wrapper">
             <div class="icon-wrapper">
-              <img src="/src/static/icon/icon-smile3.jpg" class="icon">
+              <img src="/static/image/icon/icon-smile3.jpg" class="icon">
             </div>
             <div class="text">
               表扬10次/批评31次
@@ -84,7 +84,7 @@
           <div class="blank"></div>
           <div class="result-wrapper">
             <div class="icon-wrapper">
-              <img src="/src/static/icon/icon-smile2.jpg" class="icon">
+              <img src="/static/image/icon/icon-smile2.jpg" class="icon">
             </div>
             <div class="text">
               表扬10次/批评31次
